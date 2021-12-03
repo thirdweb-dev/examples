@@ -67,8 +67,10 @@ const loadAddress = async (): Promise<string[]> => {
  * @param addresses
  */
 const generateMerkleRoot = (addresses: string[]): MerkleTree => {
-  const leaves = addresses.map((a) => SHA256(a));
-  const tree = new MerkleTree(leaves, SHA256);
+  const tree = new MerkleTree(addresses, SHA256, {
+    sortPairs: true,
+    hashLeaves: true,
+  });
   return tree;
 };
 

@@ -3,7 +3,7 @@ import { ThirdwebSDK } from "@3rdweb/sdk";
 import { useWeb3 } from "@3rdweb/hooks";
 import { UnsupportedChainIdError } from "@web3-react/core";
 
-// We instantiate the sdk on Rinkeby.
+// We instantiate the SDK on Rinkeby.
 const sdk = new ThirdwebSDK("rinkeby");
 
 const App = () => {
@@ -16,7 +16,7 @@ const App = () => {
   const signer = provider ? provider.getSigner() : undefined;
 
   useEffect(() => {
-    // We pass the signer to the sdk, which enables us to interact with
+    // We pass the signer to the SDK, which enables us to interact with
     // our deployed contract!
     sdk.setProviderOrSigner(signer);
   }, [signer]);

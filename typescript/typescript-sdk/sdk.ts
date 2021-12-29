@@ -1,9 +1,8 @@
 // Importing libraries
 import { ThirdwebSDK } from "@3rdweb/sdk";
 import { ethers } from "ethers";
-
-//Importing private key
-require('dotenv').config();
+import dotenv from "dotenv";
+dotenv.config();
 
 //Instantiate 3rdweb SDK
 const sdk = new ThirdwebSDK(

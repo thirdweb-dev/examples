@@ -1,0 +1,18 @@
+input {
+    width: 250px;
+    padding: 5px;
+    border: 1px solid gray;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.input-btn-container {
+    width: auto;
+    overflow: hidden;
+    box-shadow: 0px 0px 15px -5px;
+    margin: 3%;
+    display: flex;
+    justify-content: center;
+    
+}

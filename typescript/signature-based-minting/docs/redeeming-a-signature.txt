@@ -1,0 +1,11 @@
+title Redeeming a signature (minting)
+
+actor Claimer
+
+note over Claimer: This is the customer (claimer) who was given a signature
+note over Claimer: The owner of the module should have given the signature to the claimer somehow (offchain)
+
+Claimer->Module: Passes in the (Payload, Signature)
+Module->Module: Mint the NFT (assuming it hasn't been minted before & is valid)
+Module->Claimer: Returns the ID of the new NFT
+note over Module: This operation will consume gas that is paid by the Claimer

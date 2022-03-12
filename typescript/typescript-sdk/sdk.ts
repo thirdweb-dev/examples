@@ -10,6 +10,6 @@ const sdk = new ThirdwebSDK(
     // Your wallet private key
     process.env.PRIVATE_KEY as string,
     // RPC URL, we'll use Polygon Mumbai
-    ethers.getDefaultProvider("https://matic-mainnet.chainstacklabs.com")
+    ethers.getDefaultProvider("https://matic-mumbai.chainstacklabs.com")
   )
 );

@@ -22,7 +22,7 @@ export default function Creator() {
   const  contract = useNFTCollection("0x1AF863CCa75201A619bE1Ba69797309ebb82c8b0")
 
   const [payload, setPayload] = useState<any>();
-  const [signature, setSignature] = useState<string>();
+  // const [signature, setSignature] = useState<string>();
 
   const [metadata, setMetadata] = useState(`
   {
@@ -47,7 +47,7 @@ export default function Creator() {
 
     const startTime = new Date();
     const endTime = new Date(Date.now() + 60 * 60 * 24 * 1000);
-    const { payload, signature } = await contract.signature.generate({
+    const payload = await contract?.signature.generate({
       metadata: metadataJson, // The NFT to mint
      to: "0x55c9bBb71a5CC11c2f0c40362Bb691b33a78B764", // Who will receive the NFT (or AddressZero for anyone)
      price: 0.5, // the price to pay for minting
@@ -59,7 +59,7 @@ export default function Creator() {
      primarySaleRecipient: "0x55c9bBb71a5CC11c2f0c40362Bb691b33a78B764", // custom sale recipient for this NFT
  });
     setPayload(payload);
-    setSignature(signature);
+    // setSignature(signature);
   }, [module, metadata]);
 
   return (
@@ -98,8 +98,8 @@ export default function Creator() {
           <Heading size="sm">Payload:</Heading>
           <Text>{JSON.stringify(payload)}</Text>
 
-          <Heading size="sm">Signature:</Heading>
-          <Text>{signature}</Text>
+          {/* <Heading size="sm">Signature:</Heading>
+          <Text>{signature}</Text> */}
         </Flex>
       )}
     </Flex>

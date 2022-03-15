@@ -1,10 +1,10 @@
-import { useWeb3 } from "@3rdweb/hooks";
+import { useAddress } from "@thirdweb-dev/react";
 import { Heading } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
 export default function LandingPage() {
-  const { address } = useWeb3();
+  const address = useAddress()
 
   const router = useRouter();
 

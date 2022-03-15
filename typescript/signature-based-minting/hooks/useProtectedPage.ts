@@ -1,15 +1,15 @@
-import { useWeb3 } from "@3rdweb/hooks";
+import { useAddress } from "@thirdweb-dev/react";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
 export default function useProtectedPage() {
-  const { address } = useWeb3();
+  const address = useAddress();
 
   const router = useRouter();
 
   useEffect(() => {
     if (!address) {
-      router.push("/");
+      router.replace("/");
     }
   }, [address]);
 }

@@ -9,30 +9,28 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { useCallback, useMemo, useState } from "react";
-import useSdk from "../hooks/useSdk";
+import { useNFTCollection } from "@thirdweb-dev/react";
 
 export default function Claimer() {
   const [loading, setLoading] = useState(false);
-  const sdk = useSdk();
   const toast = useToast();
 
-  const module = useMemo(
-    () => sdk.getNFTModule("0xc335111d58913C6A382F40c8B020b4ff1ee13Ba1"),
-    [sdk]
-  );
+  const contract = useNFTCollection("0x1AF863CCa75201A619bE1Ba69797309ebb82c8b0")
 
   const [payloadValid, setPayloadValid] = useState(true);
   const [payload, setPayload] = useState<any>();
   const [signature, setSignature] = useState<string>();
 
   const mint = useCallback(async () => {
-    const id = await module.mintWithSignature(payload, signature as string);
+    
+    const id = await contract?.signature.mint(payload);
+    console.log(contract)
 
     toast({
       status: "success",
       title: "Successfully minted NFT with ID: " + id,
     });
-  }, [payload, signature, module]);
+  }, [payload, contract]);
 
   return (
     <Flex flexDirection="column">
@@ -56,6 +54,7 @@ export default function Claimer() {
             setPayload(payload);
             setPayloadValid(true);
           } catch (err) {
+            console.log(err)
             setPayloadValid(false);
           }
         }}
@@ -79,6 +78,7 @@ export default function Claimer() {
           try {
             await mint();
           } catch (err: any) {
+            console.log(err)
             toast({
               status: "error",
               title: "Error minting NFT",
@@ -88,9 +88,9 @@ export default function Claimer() {
           setLoading(false);
         }}
         isLoading={loading}
-        disabled={
-          signature === undefined || payload === undefined || signature === ""
-        }
+        // disabled={
+        //   payload === undefined
+        // }
       >
         Mint NFT
       </Button>

@@ -7,13 +7,13 @@
     "format": "prettier --write \"./**/*.{js,jsx,json,md}\""
   },
   "dependencies": {
-    "@3rdweb/react": "^1.6.1",
-    "@3rdweb/sdk": "^1.32.4",
     "@chakra-ui/react": "^1.7.2",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
+    "@thirdweb-dev/react": "^2.0.0",
+    "@thirdweb-dev/sdk": "^2.0.5",
     "axios": "^0.24.0",
-    "ethers": "^5.5.1",
+    "ethers": "^5.6.0",
     "formik": "^2.2.9",
     "framer-motion": "^4",
     "ioredis": "^4.28.2",

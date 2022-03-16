@@ -7,8 +7,6 @@
     "format": "prettier --write \"./**/*.{js,jsx,json,md}\""
   },
   "dependencies": {
-    "@3rdweb/react": "^1.6.1",
-    "@3rdweb/sdk": "^1.32.4",
     "@chakra-ui/react": "^1.7.2",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",

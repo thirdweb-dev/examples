@@ -1,3 +1,9 @@
+## Clone
+Use degit to use the example:
+```
+npx degit https://github.com/thirdweb-dev/examples/typescript/token-economy
+``` 
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

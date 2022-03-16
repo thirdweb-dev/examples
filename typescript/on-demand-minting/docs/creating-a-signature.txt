@@ -1,0 +1,11 @@
+title Creating a Signature
+
+actor User
+
+note over User: This is the module owner
+User->Module: Pass some metadata (payload) to generate a signature
+Module->User: Signature payload "please sign this"
+User->User: Signs the Payload
+User->Module: Return the signed payload back
+Module->User: Returns the signature and payload back to the user
+note over Module: None of these operations consumed any gas

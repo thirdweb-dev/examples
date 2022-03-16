@@ -1,44 +1,33 @@
-import { ThirdwebSDK } from "@3rdweb/sdk";
 import { Box, Flex, Image, Stack, Text } from "@chakra-ui/react";
-import { useEthers } from "@usedapp/core";
+import { useAddress, useNFTCollection } from "@thirdweb-dev/react";
+import { NFTMetadataOwner } from "@thirdweb-dev/sdk";
 import React, { useEffect, useState } from "react";
 
-export const SwordList: React.FC<{ displayAccount?: string }> = ({
-  displayAccount,
-}) => {
-  const { library } = useEthers();
-  const [swordList, setSwordList] = useState<any>([]);
+export const SwordList = () => {
+  const address = useAddress();
+  // React state for a list of nfts in the nft collection
+  const [nfts, setNFTs] = useState([] as NFTMetadataOwner[]);
 
+  // initialize the SDK and get the NFT Collection module
+  // get the contract address (0x...) from your dashboard!
+  const nftCollectionAddress = "0xc134230F2e67a96B41DABFF7063530178d668601";
+  const nftCollection = useNFTCollection(nftCollectionAddress);
   useEffect(() => {
-    async function fetchSwordList() {
-      if (!library) {
-        return;
-      }
-      const sdk = new ThirdwebSDK(library.getSigner());
-      const nft = sdk.getNFTModule(
-        process.env.NEXT_PUBLIC_NFT_MODULE_ADDRESS as string
-      );
-      if (displayAccount) {
-        const owned = await nft.getOwned(displayAccount);
-        setSwordList(owned);
-      } else {
-        setSwordList(await nft.getAll());
-      }
-    }
-    fetchSwordList();
-  }, [library, displayAccount]);
-
+    // get all the NFTs including the owner from the nft collection.
+    // Note: you can use async/await too!
+    nftCollection?.getOwned(address).then((allNFTs) => setNFTs(allNFTs));
+  }, [address, nftCollection]);
   return (
     <>
       <Stack>
-        {swordList.length ? (
-          swordList.map((sword: any) => (
-            <Box key={sword.id} border="1px" padding={4}>
+        {nfts.length ? (
+          nfts.map((sword: any) => (
+            <Box key={sword.metadata.id} border="1px" padding={4}>
               <Flex align="center">
                 <Box>
-                  <Image src={sword.image} boxSize="64px" />
-                  <Text fontWeight="bold">{sword.name}</Text>
-                  <Text fontSize="sm">{sword.description}</Text>
+                  <Image src={sword.metadata.image} boxSize="64px" />
+                  <Text fontWeight="bold">{sword.metadata.name}</Text>
+                  <Text fontSize="sm">{sword.metadata.description}</Text>
                 </Box>
 
                 <Box fontSize="xs">

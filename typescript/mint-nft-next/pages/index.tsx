@@ -13,7 +13,7 @@ import { MintSwordButton } from "components/MintSwordButton";
 import { SwordList } from "components/SwordList";
 import { Wallet } from "components/Wallet";
 import React from "react";
-import { useAddress } from "@thirdweb-dev/react"
+import { useAddress } from "@thirdweb-dev/react";
 const HomePage: React.FC = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   const address = useAddress();
@@ -64,7 +64,7 @@ const HomePage: React.FC = () => {
 
           <Box p={4}>
             <Text fontWeight="bold">Sword owned by me:</Text>
-            <SwordList displayAccount={address} />
+            <SwordList />
           </Box>
         </>
       ) : null}

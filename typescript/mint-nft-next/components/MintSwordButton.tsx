@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, useToast } from "@chakra-ui/react";
 import { useAddress } from "@thirdweb-dev/react";
 import { ConnectWalletButton } from "./ConnectWallet";
@@ -8,6 +8,12 @@ export const MintSwordButton = () => {
   const toast = useToast();
   const address = useAddress();
   const onMintHandler = async () => {
+    toast({
+      title: "Minting...",
+      status: "info",
+      duration: 9000,
+      isClosable: true,
+    });
     setLoading(true);
     // make a backend server api request to mint an NFT
     await fetch("/api/mint_sword", {

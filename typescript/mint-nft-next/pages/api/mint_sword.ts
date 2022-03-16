@@ -11,7 +11,7 @@ export default function mint(
   // the RPC URL to the blockchain that the NFT contract is deployed on.
   // "rinkeby" = rinkeby testnet,
   // "https://rpc-mumbai.maticvigil.com" = mumbai testnet.
-  const rpcUrl = "rinkeby";
+  const rpcUrl = process.env.NEXT_PUBLIC_RPC_URL;
 
   // setup a wallet using private key for the SDK.
   // the wallet must have MINTER role to mint the NFT.
@@ -24,7 +24,7 @@ export default function mint(
   // initialize the SDK and get the NFT Collection module
   // get the contract address (0x...) from your dashboard!
   const nft = new ThirdwebSDK(wallet).getNFTCollection(
-    "0xc134230F2e67a96B41DABFF7063530178d668601"
+    process.env.NEXT_PUBLIC_NFT_CONTRACT_ADDRESS as string
   );
 
   // returning the HTTP response. This depends on the HTTP server framework.

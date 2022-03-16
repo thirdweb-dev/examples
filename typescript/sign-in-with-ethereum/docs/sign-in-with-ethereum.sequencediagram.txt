@@ -1,0 +1,17 @@
+title Sign-in with Ethereum
+
+User->Rarible.com: Click connect wallet
+Rarible.com->User: Login success
+User->Rarible.com: Update my username to "Abe"
+Rarible.com->Backend: Generate a message for the user to sign
+Backend->Rarible.com: Returns "I would like to update preferences...." message
+Rarible.com->User: Returns "I would like to update preferences...." message
+User->User: Signs the message (result = `012345`)
+User->Rarible.com: Sends signed message (`012345`)
+Rarible.com->Backend: Sends signed message (`012345`)
+Backend->Backend: Verifies the message (`012345`)
+Backend->Backend: Generate a JWT
+Backend->Rarible.com: Forward the JWT
+Rarible.com->User: Forward the JWT
+User->User: Stores JWT in browser storage
+note over User: All future requests append the JWT to the headers

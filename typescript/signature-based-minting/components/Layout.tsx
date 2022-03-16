@@ -1,4 +1,3 @@
-// import { Connect} from "../components/Connect";
 import { ThirdwebProvider, useMetamask, ChainId, useAddress } from "@thirdweb-dev/react";
 import { Flex } from "@chakra-ui/react";
 

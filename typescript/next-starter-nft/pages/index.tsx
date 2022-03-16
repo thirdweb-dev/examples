@@ -1,0 +1,350 @@
+import type { NextPage } from "next";
+import Head from "next/head";
+import Image from "next/image";
+import styles from "../styles/Home.module.css";
+import {
+  useAddress,
+  useDisconnect,
+  useSigner,
+  useMetamask,
+  useNFTCollection,
+} from "@thirdweb-dev/react";
+
+import { Button, Center, Input, useToast } from "@chakra-ui/react";
+import { BigNumber } from "ethers";
+import { IoLogoGithub } from "react-icons/io";
+import { disconnect } from "process";
+import { useEffect, useState } from "react";
+
+const Home: NextPage = () => {
+  const toast = useToast();
+  const signer = useSigner();
+  const nftContractAddress = process.env
+    .NEXT_PUBLIC_NFT_CONTRACT_ADDRESS as string;
+  // get a function to connect to a particular wallet
+  // options: useMetamask() - useCoinbase() - useWalletConnect()
+  const connectWithMetamask = useMetamask();
+  const disconnectMetamask = useDisconnect();
+  // once connected, you can get the connected wallet information from anywhere (address, signer)
+  const address = useAddress();
+  // get an instance of your own contract
+  const nftCollection = useNFTCollection(nftContractAddress);
+  const [nfts, setNfts] = useState([] as any);
+  const [tokenId, setTokenId] = useState("");
+
+  const fetchAllNFTs = () => {
+    if (nftCollection) {
+      toast({ title: "Fetching NFTs..." });
+
+      // call functions on your contract
+      nftCollection
+        .getAll()
+        .then((nfts) => {
+          toast({ title: "Fetched NFTs", status: "success" });
+          setNfts(nfts);
+        })
+        .catch((error) => {
+          toast({
+            title: "Failed to fetch NFTs",
+            description: error.message,
+            status: "error",
+          });
+        });
+    } else {
+      toast({
+        title: "Please add contract address in the ENV variables",
+        status: "error",
+      });
+    }
+  };
+
+  const burnNFT = (id: string) => {
+    if (nftCollection) {
+      toast({ title: "Burning NFT", status: "info" });
+
+      // call functions on your contract
+      nftCollection
+        .burn(id)
+        .then(() => {
+          toast({ title: "NFT burned", status: "success" });
+        })
+        .catch((error) => {
+          toast({
+            title: "Failed to burn NFT",
+            description: error.message,
+            status: "error",
+          });
+        });
+    } else {
+      toast({
+        title: "Please add contract address in the ENV variables",
+        status: "error",
+      });
+    }
+  };
+
+  const transferNft = (to: string, id: string) => {
+    if (nftCollection) {
+      toast({ title: "Transferring NFT", status: "info" });
+
+      // call functions on your contract
+      nftCollection
+        .transfer(to, id)
+        .then(() => {
+          toast({ title: "NFT Transferred", status: "success" });
+        })
+        .catch((error) => {
+          toast({
+            title: "Failed to transfer NFT",
+            description: error.message,
+            status: "error",
+          });
+        });
+    } else {
+      toast({
+        title: "Please add contract address in the ENV variables",
+        status: "error",
+      });
+    }
+  };
+
+  function sendTx() {
+    toast({ title: "Sending transaction..." });
+    signer
+      ?.sendTransaction({
+        to: "0x0000000000000000000000000000000000000000",
+        value: BigNumber.from(0),
+      })
+      .then(() => {
+        toast({
+          title: "Transaction sent!",
+          status: "success",
+        });
+      })
+      .catch((error) => {
+        console.error("failed to send transaction", error);
+        toast({
+          title: "Failed to send transaction",
+          description: error.message,
+          status: "error",
+        });
+      });
+  }
+
+  function signMsg() {
+    toast({ title: "Signing message", status: "info", duration: 5000 });
+    signer?.signMessage("this is a test message!").then(() => {
+      toast({ title: "Message signed", status: "success", duration: 5000 });
+    });
+  }
+
+  function mintNft(name: string, description: string) {
+    if (nftCollection) {
+      toast({ title: "Minting NFT", status: "info" });
+
+      const metadata = {
+        name: name ? name : "sample NFT",
+        image: "ipfs://QmQ2VYeoFnFrPKX6GJXVoRamVfqpEWA1pK1NKWDydSmJc8",
+        description: description
+          ? description
+          : "Same NFT minted via thirdweb NFT starter",
+      };
+      // call functions on your contract
+      nftCollection
+        .mint(metadata)
+        .then(() => {
+          toast({ title: "NFT minted", status: "success" });
+        })
+        .catch((error) => {
+          toast({
+            title: "Failed to mint NFT",
+            description: error.message,
+            status: "error",
+          });
+        });
+    } else {
+      toast({
+        title: "Please add contract address in the ENV variables",
+        status: "error",
+      });
+    }
+  }
+
+  return (
+    <div className={styles.container}>
+      <Head>
+        <title>Create Thirdweb App</title>
+        <meta name="description" content="Generated by create-thirdweb-app" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      <main className={styles.main}>
+        <h1 className={styles.title}>
+          <a href="https://thirdweb.com">thirdweb</a> NFT starter
+        </h1>
+        <br />
+        <p className={styles.description}>
+          This is a barebones NextJS app initialized with{" "}
+          <a href="https://npmjs.com/package/@thirdweb-dev/react">
+            thirdweb react module.
+          </a>{" "}
+          <br />
+          It demonstrates the different functions of the NFT Contract SDK.{" "}
+          <br />
+          Get started by reading{" "}
+          <code className={styles.code}>readme.md</code> or editing{" "}
+          <code className={styles.code}>pages/index.tsx</code>
+        </p>
+        <div>
+          {address ? (
+            <>
+              <Center>
+                <Button onClick={disconnectMetamask}>
+                  Disconnect {address}
+                </Button>
+              </Center>
+              <div className={styles.grid}>
+                <div className={styles.card}>
+                  <h2>Send Transaction</h2>
+                  <p>Send money to an address from connected wallet. </p>
+                  <Button onClick={sendTx}>Send Transaction</Button>
+                </div>
+                <div className={styles.card}>
+                  <h2>Sign Message </h2>
+                  <p>Sign a message with public keys of connected wallet </p>
+                  <Button onClick={signMsg}>Sign Message</Button>
+                </div>
+
+                <div className={styles.card}>
+                  <h2>List All NFTs</h2>
+                  <p>List all NFTs minted using the given contract </p>
+                  <Button onClick={fetchAllNFTs}>List All NFTS</Button>
+                  <ul>
+                    {nfts.map((nft: any) => (
+                      <li key={nft.id}>{nft.metadata.name}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div className={styles.card}>
+                  <h2>Mint NFT</h2>
+                  <p>Mint new NFTs (connected wallet should have admin / minter role to do this)</p>
+                  <Input id={"mintTokenName"} placeholder={"NFT Name"} />
+                  <Input
+                    id={"mintTokenDescription"}
+                    placeholder={"Description"}
+                  />
+                  <Button
+                    onClick={() => {
+                      const nameInput = document.getElementById(
+                        "mintTokenName"
+                      ) as HTMLInputElement;
+                      const descriptionInput = document.getElementById(
+                        "mintTokenDescription"
+                      ) as HTMLInputElement;
+                      mintNft(nameInput?.value, descriptionInput?.value);
+                    }}
+                  >
+                    Transfer
+                  </Button>
+                </div>
+                <div className={styles.card}>
+                  <h2>Transfer NFT</h2>
+                  <p>Transfer NFT to a different wallet. (connected wallet should hold the token ID) </p>
+                  <Input
+                    id={"transferTokenId"}
+                    placeholder={"Transfer Token ID"}
+                  />
+                  <Input
+                    id={"transferAddress"}
+                    placeholder={"Address to transfer to"}
+                  />
+                  <Button
+                    onClick={() => {
+                      const tokenInput = document.getElementById(
+                        "transferTokenId"
+                      ) as HTMLInputElement;
+                      const addressInput = document.getElementById(
+                        "transferAddress"
+                      ) as HTMLInputElement;
+                      transferNft(addressInput?.value, tokenInput?.value);
+                    }}
+                  >
+                    Transfer
+                  </Button>
+                </div>
+                <div className={styles.card}>
+                  <h2>Burn NFT</h2>
+                  <p>Burn the NFT so its owned by no one. This is permanent. </p>
+                  <Input id={"burnTokenId"} placeholder={"Burn Token ID"} />
+                  <Button
+                    onClick={() => {
+                      const tokenInput = document.getElementById(
+                        "burnTokenId"
+                      ) as HTMLInputElement;
+                      burnNFT(tokenInput?.value);
+                    }}
+                  >
+                    Burn NFT
+                  </Button>
+                </div>
+              </div>
+            </>
+          ) : (
+            <Center>
+              <Button onClick={connectWithMetamask}>
+                Connect Metamask Wallet
+              </Button>
+            </Center>
+          )}
+          <div className={styles.grid}>
+            <a
+              href="https://typescript-sdk.thirdweb.com"
+              className={styles.card}
+            >
+              <h2>Documentation &rarr;</h2>
+              <p>Find in-depth information about thirdweb features and API.</p>
+            </a>
+            <a href="https://portal.thirdweb.com" className={styles.card}>
+              <h2>Learn &rarr;</h2>
+              <p>Learn about Thirdweb modules in the thirdweb portal!</p>
+            </a>
+            <a
+              href="https://github.com/thirdweb-dev/create-thirdweb-app/tree/main/examples"
+              className={styles.card}
+            >
+              <h2>Examples &rarr;</h2>
+              <p>Discover and deploy boilerplate example thirdweb projects.</p>
+            </a>
+            <a href="https://thirdweb.com" className={styles.card}>
+              <h2>Dashboard &rarr;</h2>
+              <p>Interact with and manage thirdweb modules without code</p>
+            </a>
+          </div>
+        </div>
+      </main>
+
+      <footer className={styles.footer}>
+        <a
+          href="https://thirdweb.com?utm_source=create-thirdweb-app&utm_medium=default-template&utm_campaign=create-thirdweb-app"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Powered by{" "}
+          <span className={styles.logo}>
+            <Image
+              src="/thirdweb.svg"
+              alt="Thirdweb Logo"
+              width={29}
+              height={16}
+            />
+          </span>
+        </a>
+        <a href="https://github.com/thirdweb-dev">
+          <IoLogoGithub width={50} />
+        </a>
+      </footer>
+    </div>
+  );
+};
+
+export default Home;

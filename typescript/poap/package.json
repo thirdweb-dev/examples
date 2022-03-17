@@ -1,0 +1,26 @@
+{
+  "name": "poap",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@chakra-ui/react": "^1.8.6",
+    "@saas-ui/react": "^0.12.1",
+    "@thirdweb-dev/react": "^2.0.0",
+    "@thirdweb-dev/sdk": "^2.0.9",
+    "degen": "^0.0.78",
+    "ethers": "^5.6.1",
+    "next": "12.1.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
+  },
+  "devDependencies": {
+    "eslint": "8.11.0",
+    "eslint-config-next": "12.1.0"
+  }
+}

@@ -8,9 +8,9 @@ import {
 } from '@thirdweb-dev/react';
 
 export const ConnectWallet = () => {
+  const connectWithCoinbaseWallet = useCoinbaseWallet();
   const connectWithMetamask = useMetamask();
   const connectWithWalletConnect = useWalletConnect();
-  const connectWithCoinbaseWallet = useCoinbaseWallet();
   const disconnectWallet = useDisconnect();
   const address = useAddress();
   const network = useNetwork();
@@ -31,12 +31,12 @@ export const ConnectWallet = () => {
   // If no wallet is connected, show connect wallet options
   return (
     <div>
+      <button onClick={() => connectWithCoinbaseWallet()}>
+        Connect Coinbase Wallet
+      </button>
       <button onClick={() => connectWithMetamask()}>Connect MetaMask</button>
       <button onClick={() => connectWithWalletConnect()}>
         Connect WalletConnect
-      </button>
-      <button onClick={() => connectWithCoinbaseWallet()}>
-        Connect Coinbase Wallet
       </button>
     </div>
   );

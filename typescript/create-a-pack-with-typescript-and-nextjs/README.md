@@ -1,6 +1,6 @@
-# thirdweb CRA Starter
+# create a pack with NextJS
 
-A starter thirdweb template for a React application.
+A starter example to create a pack using NextJS and thirdweb SDK
 
 ## Installation
 
@@ -37,7 +37,7 @@ npm run build
 
 ## Resources
 
-[docs](https://google.com)
+[docs](https://docs.thirdweb.com/react)
 
 
 Stuck somewhere? Join the [community discord](https://discord.gg/thirdweb).

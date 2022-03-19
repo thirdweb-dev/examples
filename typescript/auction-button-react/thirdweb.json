@@ -2,9 +2,9 @@
   "install": "npm install",
   "build": "npm run build",
   "run": "npm run dev",
-  "title": "thirdweb CRA Starter",
-  "description": "A starter thirdweb template for a React application.",
-  "env": true,
+  "title": "auction button component using thirdweb React SDK",
+  "description": "An example implementation of auction button component using thirdweb React SDK",
+  "env": false,
   "addVercelButton": true,
-  "links": { "docs": "https://google.com" }
+  "links": { "docs": "https://docs.thirdweb.com/react" }
 }

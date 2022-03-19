@@ -1,6 +1,6 @@
-# thirdweb CRA Starter
+# add connect-wallet to your Next App
 
-A starter thirdweb template for a React application.
+A starter template to add thirdweb wallet-connect to your Next application
 
 ## Installation
 
@@ -18,7 +18,7 @@ npm install
 
 ## Local Development
 
-Make sure to set up valid environment variables. Copy .env.example into .env and change the values to your needs.
+
 
 Run the following command to run the app locally:
 
@@ -37,7 +37,7 @@ npm run build
 
 ## Resources
 
-[docs](https://google.com)
+[docs](https://docs.thirdeb.com/react)
 
 
 Stuck somewhere? Join the [community discord](https://discord.gg/thirdweb).

@@ -37,7 +37,7 @@ npm run build
 
 ## Resources
 
-[docs](https://google.com)
+[docs](https://docs.thirdweb.com/react)
 
 
 Stuck somewhere? Join the [community discord](https://discord.gg/thirdweb).

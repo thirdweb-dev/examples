@@ -6,5 +6,5 @@
   "description": "A starter thirdweb template for a React application.",
   "env": true,
   "addVercelButton": true,
-  "links": { "docs": "https://google.com" }
+  "links": { "docs": "https://docs.thirdweb.com/react" }
 }

@@ -1,6 +1,6 @@
-# thirdweb CRA Starter
+# Early Access NFT Example
 
-A starter thirdweb template for a React application.
+Early Access NFT Example
 
 ## Installation
 
@@ -37,7 +37,7 @@ npm run build
 
 ## Resources
 
-[docs](https://google.com)
+[docs](https://docs.thirdweb.com/react)
 
 
 Stuck somewhere? Join the [community discord](https://discord.gg/thirdweb).

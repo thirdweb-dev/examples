@@ -18,7 +18,7 @@ npm install
 
 ## Local Development
 
-Make sure to set up valid environment variables. Copy .env.example into .env and change the values to your needs.
+
 
 Run the following command to run the app locally:
 

@@ -4,7 +4,6 @@
   "run": "npm run dev",
   "title": "Early Access NFT Example",
   "description": "Early Access NFT Example",
-  "env": true,
   "addVercelButton": true,
   "links": { "docs": "https://docs.thirdweb.com/react" }
 }

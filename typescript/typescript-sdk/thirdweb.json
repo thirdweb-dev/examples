@@ -4,7 +4,6 @@
   "run": "npx ts-node sdk.ts",
   "title": "thirdweb SDK starter",
   "description": "A typescript starter for thirdweb SDK",
-  "env": true,
   "addVercelButton": false,
   "links": { "docs": "https://docs.thirdweb.com/typescript" }
 }

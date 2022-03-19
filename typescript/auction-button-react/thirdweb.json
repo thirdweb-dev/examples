@@ -4,7 +4,6 @@
   "run": "npm run dev",
   "title": "auction button component using thirdweb React SDK",
   "description": "An example implementation of auction button component using thirdweb React SDK",
-  "env": false,
   "addVercelButton": true,
   "links": { "docs": "https://docs.thirdweb.com/react" }
 }

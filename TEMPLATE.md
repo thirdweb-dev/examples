@@ -2,7 +2,7 @@
 
 $description
 
-## Installation
+### Installation
 
 Clone this project locally using [degit](https://npmjs.org/package/degit):
 
@@ -15,8 +15,9 @@ Then install the dependencies:
 ```
 $install
 ```
-
-## Local Development
+$technologies
+$functions
+### Local Development
 
 $env
 
@@ -27,7 +28,7 @@ $run
 ```
 
 
-## Building for production
+### Building for production
 
 $deploy
 
@@ -35,7 +36,7 @@ $deploy
 $build
 ```
 
-## Resources
+### Resources
 
 $links
 

@@ -2,7 +2,7 @@
 
 An example ts script to mint ERC20 tokens using thirdweb SDK
 
-## Installation
+### Installation
 
 Clone this project locally using [degit](https://npmjs.org/package/degit):
 
@@ -16,7 +16,8 @@ Then install the dependencies:
 npm install
 ```
 
-## Local Development
+
+### Local Development
 
 Make sure to set up valid environment variables. Copy .env.example into .env and change the values to your needs.
 
@@ -27,7 +28,7 @@ npx ts-node minter.ts
 ```
 
 
-## Building for production
+### Building for production
 
 
 
@@ -35,7 +36,7 @@ npx ts-node minter.ts
 npx tsc minter.ts
 ```
 
-## Resources
+### Resources
 
 [docs](https://docs.thirdweb.com/typescript)
 

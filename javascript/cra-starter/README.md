@@ -2,7 +2,7 @@
 
 A starter thirdweb template for a React application.
 
-## Installation
+### Installation
 
 Clone this project locally using [degit](https://npmjs.org/package/degit):
 
@@ -16,7 +16,8 @@ Then install the dependencies:
 npm install
 ```
 
-## Local Development
+
+### Local Development
 
 
 
@@ -27,7 +28,7 @@ npm run dev
 ```
 
 
-## Building for production
+### Building for production
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fhello-world)
 
@@ -35,7 +36,7 @@ npm run dev
 npm run build
 ```
 
-## Resources
+### Resources
 
 [docs](https://docs.thirdweb.com/react)
 

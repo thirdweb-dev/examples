@@ -5,5 +5,7 @@
   "title": "login with ethereum using thirdweb React SDK ",
   "description": "An example implementation of login with ethereum using thirdweb React SDK",
   "addVercelButton": true,
+  "technologies": ["NextJS", "Chakra", "Docker", "Redis"],
+  "functions" : ["React SDK"],
   "links": { "docs": "https://docs.thirdweb.com/react" }
 }

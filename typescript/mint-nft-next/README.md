@@ -1,61 +1,43 @@
-## thirdweb-sdk-example
+# mint NFT using NextJS and thirdweb React SDK
 
-A starter project with:
+An example implementation to mint sword NFTs using NextJS and thirdweb React SDK
 
-- Web App: [Next.js](https://nextjs.org/), [Chakra UI](https://chakra-ui.com/) and [useDApp](https://github.com/EthWorks/useDApp).
-- Thirdweb SDK
+## Installation
 
-#### Environment Variables
+Clone this project locally using [degit](https://npmjs.org/package/degit):
 
-```
-PRIVATE_KEY=<wallet private key with minter role>
-NEXT_PUBLIC_RPC_URL=<alchemy / infura / rpc url. defaults to Polygon Mumbai public rpc if left empty>
-NEXT_PUBLIC_NFT_MODULE_ADDRESS=<NFT module address from thirdweb.com>
+```bash
+npx degit https://github.com/thirdweb-dev/examples/tree/main/typescript/mint-nft-next
 ```
 
-## Usage (pseudocode)
+Then install the dependencies:
 
-### Client Side (React):
-
-Fetching all NFTs available in the module. [Source](https://github.com/thirdweb-dev/nftlabs-sdk-example/blob/5dcd73001061ef0680c46fd91861dac893928a6e/components/SwordList.tsx#L12-L29)
-
-```ts
-const sdk = new ThirdwebSDK(library.getSigner());
-const nft = sdk.getNFTModule(
-  process.env.NEXT_PUBLIC_NFT_MODULE_ADDRESS as string
-);
-...
-const tokens = await nft.getAll();
+```
+npm install
 ```
 
-### Server Side (REST API Handler):
+## Local Development
 
-Minting NFTs with random properties.
-[Source](https://github.com/thirdweb-dev/nftlabs-sdk-example/blob/5dcd73001061ef0680c46fd91861dac893928a6e/pages/api/mint_sword.ts#L42-L64)
+Make sure to set up valid environment variables. Copy .env.example into .env and change the values to your needs.
 
-```ts
-// connect to wallet with minter permission
-const sdk = new ThirdwebSDK(
-  new ethers.Wallet(
-    process.env.PRIVATE_KEY as string,
-    ethers.getDefaultProvider(process.env.NEXT_PUBLIC_RPC_URL)
-  )
-);
+Run the following command to run the app locally:
 
-const nft = sdk.getNFTModule(
-  process.env.NEXT_PUBLIC_NFT_MODULE_ADDRESS as string
-);
-
-...
-const token = await nft.mintTo(account, {
-  name: `${type} sword - ${rarity}`,
-  description: `The special ${type} sword crafted for ${account}`,
-  image: image,
-  properties: {
-    type: type,
-    rarity: rarity,
-    element: sample(["fire", "water", "earth", "lightning", "wind"]),
-    attack: getRandomInt(10, 30),
-  },
-})
 ```
+npm run dev
+```
+
+
+## Building for production
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fhello-world)
+
+```
+npm run build
+```
+
+## Resources
+
+[docs](https://docs.thirdweb.com/react)
+
+
+Stuck somewhere? Join the [community discord](https://discord.gg/thirdweb).

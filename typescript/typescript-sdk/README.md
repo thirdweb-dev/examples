@@ -1,13 +1,13 @@
-# on-demand minting using NextJS and thirdweb SDK
+# thirdweb SDK starter
 
-An example implementation of on-demand minting using NextJS and thirdweb SDK
+A typescript starter for thirdweb SDK
 
 ## Installation
 
 Clone this project locally using [degit](https://npmjs.org/package/degit):
 
 ```bash
-npx degit https://github.com/thirdweb-dev/examples/tree/main/typescript/on-demand-minting
+npx degit https://github.com/thirdweb-dev/examples/tree/main/typescript/typescript-sdk
 ```
 
 Then install the dependencies:
@@ -23,21 +23,21 @@ Make sure to set up valid environment variables. Copy .env.example into .env and
 Run the following command to run the app locally:
 
 ```
-npm run dev
+npx ts-node sdk.ts
 ```
 
 
 ## Building for production
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fhello-world)
+
 
 ```
-npm run build
+npx tsc sdk.ts
 ```
 
 ## Resources
 
-[docs](https://docs.thirdweb.com/react)
+[docs](https://docs.thirdweb.com/typescript)
 
 
 Stuck somewhere? Join the [community discord](https://discord.gg/thirdweb).

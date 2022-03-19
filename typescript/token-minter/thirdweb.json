@@ -1,0 +1,10 @@
+{
+  "install": "npm install",
+  "build": "npx tsc minter.ts",
+  "run": "npx ts-node minter.ts",
+  "title": "thirdweb SDK token minter",
+  "description": "An example ts script to mint ERC20 tokens using thirdweb SDK",
+  "env": true,
+  "addVercelButton": false,
+  "links": { "docs": "https://docs.thirdweb.com/typescript" }
+}

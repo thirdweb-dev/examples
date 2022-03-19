@@ -1,0 +1,10 @@
+{
+  "install": "npm install",
+  "build": "npm run build",
+  "run": "npm run start",
+  "title": "thirdweb CRA token example",
+  "description": "An example CRA app for tokens.",
+  "env": true,
+  "addVercelButton": true,
+  "links": { "docs": "https://docs.thirdweb.com/react" }
+}

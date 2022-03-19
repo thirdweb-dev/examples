@@ -1,0 +1,10 @@
+{
+  "install": "npm install",
+  "build": "npm run build",
+  "run": "npm run dev",
+  "title": "login with ethereum using thirdweb React SDK ",
+  "description": "An example implementation of login with ethereum using thirdweb React SDK",
+  "env": true,
+  "addVercelButton": true,
+  "links": { "docs": "https://docs.thirdweb.com/react" }
+}

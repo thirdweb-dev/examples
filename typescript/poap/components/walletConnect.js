@@ -4,23 +4,20 @@ import {
   useAddress,
   useDisconnect,
 } from "@thirdweb-dev/react";
-import { Button, IconWallet } from "degen";
+import { VStack, Icon, useDisclosure, Text, Button } from "@chakra-ui/react";
 import {
-  ModalsProvider,
-  useModals,
-  Persona,
-  PersonaContainer,
-  PersonaAvatar,
-  PersonaDetails,
-  PersonaLabel,
-  PersonaSecondaryLabel,
-  PersonaTertiaryLabel,
-  Presence,
-} from "@saas-ui/react";
-import { VStack, Icon, useDisclosure, Text } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+} from "@chakra-ui/react";
 
 export default function WalletConnect() {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   const loginWithMetamask = useMetamask();
 
   const loginWithCoinbaseWallet = useCoinbaseWallet();
@@ -30,10 +27,9 @@ export default function WalletConnect() {
   };
   const fireConnect = (tool) => {
     tools[tool]().then(() => {
-      modals.closeAll();
+      onClose();
     });
   };
-  const modals = useModals();
   const address = useAddress();
 
   const disconnectWallet = useDisconnect();
@@ -186,67 +182,55 @@ export default function WalletConnect() {
   };
   const WalletComponent = () => {
     return (
-      <VStack>
-        <Button
-          width="full"
-          onClick={() => fireConnect("metamask")}
-          prefix={<Metamask />}
-          variant="secondary"
-          tone={"red"}
-        >
-          {" "}
-          Metamask Wallet
-        </Button>
-        <Button
-          width="full"
-          onClick={() => fireConnect("coinbase")}
-          prefix={<CoinbaseWallet />}
-          variant="secondary"
-          tone="blue"
-        >
-          Coinbase Wallet
-        </Button>
-        <Button
-          width="full"
-          onClick={() => fireConnect("coinbase")}
-          variant="secondary"
-          tone="blue"
-        >
-          Wallet Connect
-        </Button>
-        <div/>
-      </VStack>
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Connect Wallet</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <VStack>
+              <Button
+                width="full"
+                onClick={() => fireConnect("metamask")}
+                backgroundColor="orange"
+              >
+                {" "}
+                Metamask Wallet
+              </Button>
+              <Button
+                width="full"
+                onClick={() => fireConnect("coinbase")}
+                backgroundColor="blue.300"
+              >
+                Coinbase Wallet
+              </Button>
+              <Button
+                width="full"
+                onClick={() => fireConnect("coinbase")}
+                variant="secondary"
+                backgroundColor="blue.500"
+              >
+                Wallet Connect
+              </Button>
+              <div />
+            </VStack>
+          </ModalBody>
+
+          <ModalFooter>
+            <Button colorScheme="blue" mr={3} onClick={onClose}>
+              Close
+            </Button>
+            <Button variant="ghost">Secondary Action</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     );
   };
 
-  if (address !== undefined) {
-    return (
-      <Persona
-        name={address}
-        secondaryLabel={
-          <Button width="full" onClick={disconnectWallet()}>
-            Disconnect
-          </Button>
-        }
-        presence="online"
-      />
-    );
-  } else {
-    return (
-      <>
-        <Button
-          prefix={<IconWallet />}
-          onClick={() =>
-            modals.open({
-              title: <Text color={"black"}>Connect Wallet</Text>,
-              body: <WalletComponent />,
-              scope: "modal",
-            })
-          }
-        >
-          Connect Wallet
-        </Button>
-      </>
-    );
-  }
+  return (
+    <>
+      <Button onClick={onOpen}>Connect Wallet</Button>
+      <WalletComponent />
+    </>
+  );
 }

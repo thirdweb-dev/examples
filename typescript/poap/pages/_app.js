@@ -12,7 +12,7 @@ function App({ Component, pageProps }) {
         <style global>{`
               body,modal,iframe,iframe * {
                 background-color: #0e1012;
-                color: #f9f6fd;
+                color: #black;
               }
             `}</style>
         <Component {...pageProps} />

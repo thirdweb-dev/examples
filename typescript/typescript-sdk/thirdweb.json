@@ -1,9 +1,0 @@
-{
-  "install": "npm install",
-  "build": "npx tsc sdk.ts",
-  "run": "npx ts-node sdk.ts",
-  "title": "thirdweb SDK starter",
-  "description": "A typescript starter for thirdweb SDK",
-  "addVercelButton": false,
-  "links": { "docs": "https://docs.thirdweb.com/typescript" }
-}

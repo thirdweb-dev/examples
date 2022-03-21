@@ -4,6 +4,7 @@
   "run": "npm run start",
   "title": "thirdweb CRA token example",
   "description": "An example CRA app for tokens.",
-  "addVercelButton": true,
+  "addVercelButton": false,
+  "techonlogies" : ["React"],
   "links": { "docs": "https://docs.thirdweb.com/react" }
 }

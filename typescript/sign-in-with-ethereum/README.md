@@ -23,9 +23,6 @@ npm install
  - Docker
  - Redis
 
-
-### thirdweb SDKs used
- - React SDK
 ### Local Development
 
 
@@ -39,7 +36,7 @@ npm run dev
 
 ### Building for production
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/thirdweb-dev/examples/tree/main/typescript/sign-in-with-ethereum)
+
 
 ```
 npm run build

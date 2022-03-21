@@ -17,6 +17,9 @@ npm install
 ```
 
 
+### Technologies Used
+ - NextJS
+
 ### Local Development
 
 
@@ -30,7 +33,7 @@ npm run dev
 
 ### Building for production
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/thirdweb-dev/examples/tree/main/typescript/create-a-pack-with-typescript-and-nextjs)
+
 
 ```
 npm run build

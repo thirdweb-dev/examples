@@ -30,7 +30,7 @@ npm run dev
 
 ### Building for production
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/thirdweb-dev/examples/tree/main/javascript/cra-starter)
+
 
 ```
 npm run build

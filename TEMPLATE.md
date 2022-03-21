@@ -16,7 +16,7 @@ Then install the dependencies:
 $install
 ```
 $technologies
-$functions
+
 ### Local Development
 
 $env

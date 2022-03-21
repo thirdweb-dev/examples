@@ -4,6 +4,7 @@
   "run": "npm run dev",
   "title": "add connect-wallet to your Next App",
   "description": "A starter template to add thirdweb wallet-connect to your Next application",
-  "addVercelButton": true,
+  "technologies" : ["nextjs"],
+  "addVercelButton": false,
   "links": { "docs": "https://docs.thirdeb.com/react" }
 }

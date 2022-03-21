@@ -17,6 +17,9 @@ npm install
 ```
 
 
+### Technologies Used
+ - NextJS
+
 ### Local Development
 
 Make sure to set up valid environment variables. Copy .env.example into .env and change the values to your needs.
@@ -30,7 +33,7 @@ npm run dev
 
 ### Building for production
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/thirdweb-dev/examples/tree/main/typescript/mint-nft-next)
+
 
 ```
 npm run build

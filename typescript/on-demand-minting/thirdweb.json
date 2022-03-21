@@ -4,6 +4,7 @@
   "run": "npm run dev",
   "title": "on-demand minting using NextJS and thirdweb SDK",
   "description": "An example implementation of on-demand minting using NextJS and thirdweb SDK",
-  "addVercelButton": true,
+  "addVercelButton": false,
+  "technologies": ["NextJS", "Chakra"],
   "links": { "docs": "https://docs.thirdweb.com/react" }
 }

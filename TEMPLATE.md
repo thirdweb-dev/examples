@@ -1,44 +1,40 @@
-# $title
+# name of the example
 
-$description
+A short description of the example (what it does, what it uses, etc.)
 
 ### Installation
 
 Clone this project locally using [degit](https://npmjs.org/package/degit):
 
 ```bash
-npx degit $repo
+npx degit https://github.com/thirdweb-dev/examples/tree/main/{YOUR_EXAMPLE_PATH}
 ```
 
 Then install the dependencies:
 
+```bash
+npm install # or any other command for the particular language
 ```
-$install
-```
-$technologies
+
+### Technologies Used
+
+Bullet List of all the technologies used in the example (eg. NextJS, Chakra)
 
 ### Local Development
 
-$env
-
 Run the following command to run the app locally:
 
+```bash
+npm run dev # or any other suitable command
 ```
-$run
-```
-
 
 ### Building for production
 
-$deploy
-
-```
-$build
+```bash
+npm run build # or any other suitable command
 ```
 
 ### Resources
 
-$links
-
-
+[docs](https://docs.thirdeb.com/react)
 Stuck somewhere? Join the [community discord](https://discord.gg/thirdweb).

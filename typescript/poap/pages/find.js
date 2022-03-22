@@ -14,7 +14,6 @@ import parseIpfs from "../utils/parseIpfs";
 
 import { useNFTCollection } from "@thirdweb-dev/react";
 import { useState, useEffect } from "react";
-import { SearchInput } from "@saas-ui/react";
 export default function Create() {
   const [eventList, setEventList] = useState([]);
   const [search, setSearch] = useState("");

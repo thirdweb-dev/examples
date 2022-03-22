@@ -12,7 +12,6 @@ import {
 } from "@chakra-ui/react";
 import parseIpfs from "../../utils/parseIpfs";
 import { useState, useEffect } from "react";
-import { SearchInput } from "@saas-ui/react";
 export default function Create() {
   const [eventList, setEventList] = useState([]);
   const [search, setSearch] = useState("");

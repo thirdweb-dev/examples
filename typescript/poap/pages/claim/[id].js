@@ -13,6 +13,8 @@ import {
   Center,
   useToast,
 } from "@chakra-ui/react";
+import parseIpfs from "../../utils/parseIpfs";
+
 import { useRouter } from "next/router";
 import { useNFTCollection } from "@thirdweb-dev/react";
 import { useState, useEffect } from "react";
@@ -66,7 +68,7 @@ export default function Create() {
           borderRadius="lg"
           overflow="hidden"
         >
-          <Image src={event.image} alt={event.name} />
+          <Image src={parseipfs(event.image)} alt={event.name} />
 
           <Box p="6">
             <Box display="flex" alignItems="baseline">

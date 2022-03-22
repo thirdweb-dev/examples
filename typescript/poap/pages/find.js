@@ -10,6 +10,8 @@ import {
   Badge,
   SimpleGrid,
 } from "@chakra-ui/react";
+import parseIpfs from "../utils/parseIpfs";
+
 import { useNFTCollection } from "@thirdweb-dev/react";
 import { useState, useEffect } from "react";
 import { SearchInput } from "@saas-ui/react";
@@ -65,7 +67,7 @@ export default function Create() {
               borderRadius="lg"
               overflow="hidden"
             >
-              <Image src={event.image} alt={event.name} />
+              <Image src={parseIpfs(event.image)} alt={event.name} />
 
               <Box p="6">
                 <Box display="flex" alignItems="baseline">

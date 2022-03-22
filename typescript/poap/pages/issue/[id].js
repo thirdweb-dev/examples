@@ -51,7 +51,7 @@ export default function Create() {
       });
   }, [router.query.id]);
   async function handleSubmit() {
-    alert(nftCollection.getAddress());
+    alert("this might take some time!");
     const payload = {
       metadata: {
         name: event.name,

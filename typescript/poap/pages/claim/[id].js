@@ -11,16 +11,17 @@ import {
   SimpleGrid,
   Spinner,
   Center,
+  useToast,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { useNFTCollection } from "@thirdweb-dev/react";
 import { useState, useEffect } from "react";
 export default function Create() {
+  const toast = useToast();
   const router = useRouter();
   const [event, setEvent] = useState(undefined);
-  const nftCollection = useNFTCollection(
-    process.env.NEXT_PUBLIC_NFT_CONTRACT_ADDRESS
-  );
+  const [signature, setSignature] = useState(undefined);
+  const nftCollection = useNFTCollection(event?.address);
   useEffect(() => {
     fetch(`/api/list?id=${router.query.id}`)
       .then((res) => res.json())
@@ -30,6 +31,30 @@ export default function Create() {
         }
       });
   }, [router.query.id]);
+  useEffect(() => {
+    if (router.query.voucher) {
+      setSignature(router.query.voucher);
+    }
+  }, [router.query.voucher]);
+
+  async function handleSubmit() {
+    const result = await fetch(`/api/get?id=${router.query.voucher}`).then(
+      (res) => res.json()
+    );
+    if (result.success) {
+      if (!(await nftCollection.signature.verify(result.signature))) {
+        toast({
+          title: "Invalid Voucher",
+          description: "The voucher is either invalid or has expired.",
+          status: "error",
+          duration: 5000,
+          isClosable: true,
+        });
+      } else {
+        await nftCollection.signature.mint(result.signature);
+      }
+    }
+  }
 
   return (
     <Page title={"Claim"} subheading={""}>
@@ -62,10 +87,17 @@ export default function Create() {
 
             <Box>{event.description}</Box>
             <Box>
-
-              <Button width={"xs"} marginTop={5}>
-                Claim NFT
-              </Button>
+              {!signature ? (
+                <Input
+                  onChange={(e) => setSignature(e.target.value)}
+                  placeholder="Paste Voucher"
+                />
+              ) : null}
+              {signature ? (
+                <Button width={"xs"} marginTop={5} onClick={handleSubmit}>
+                  Claim NFT
+                </Button>
+              ) : null}
             </Box>
           </Box>
         </Box>

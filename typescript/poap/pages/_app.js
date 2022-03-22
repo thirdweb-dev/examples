@@ -7,12 +7,16 @@ import { ThirdwebProvider } from "@thirdweb-dev/react";
 
 function App({ Component, pageProps }) {
   return (
-    <ThirdwebProvider desiredChainId={1}>
+    <ThirdwebProvider desiredChainId={8001}>
       <ChakraProvider>
         <style global>{`
-              body,modal,iframe,iframe * {
+              body {
                 background-color: #0e1012;
-                color: #black;
+                color: white;
+              }
+              button {
+                background-color: white;
+                color: black
               }
             `}</style>
         <Component {...pageProps} />

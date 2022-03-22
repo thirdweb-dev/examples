@@ -10,7 +10,6 @@ import {
   Badge,
   SimpleGrid,
 } from "@chakra-ui/react";
-import { useNFTCollection } from "@thirdweb-dev/react";
 import { useState, useEffect } from "react";
 import { SearchInput } from "@saas-ui/react";
 export default function Create() {
@@ -82,7 +81,11 @@ export default function Create() {
                 </Box>
 
                 <Box>{event.description}</Box>
-                <Box><Link href={`/issue/${event.id}`}><Button>Issue NFT</Button></Link></Box>
+                <Box>
+                  <Link href={`/issue/${event.id}`}>
+                    <Button>Issue NFT</Button>
+                  </Link>
+                </Box>
               </Box>
             </Box>
           );

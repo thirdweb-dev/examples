@@ -4,11 +4,17 @@ export default function Home() {
   return (
     <Page title={"example"} subheading={""}>
       <VStack>
-        <Link href="/create">
-          <Button width={"xl"}>Create an event</Button>
+        <Link href="/claim">
+          <Button width={"xl"}>Claim NFT</Button>
+        </Link>
+        {/* <Link href="/find">
+          <Button width={"xl"}>Find Events</Button>
+        </Link> */}
+        <Link href="/issue">
+          <Button width={"xl"}>Issue NFTs</Button>
         </Link>
         <Link href="/create">
-          <Button width={"xl"}>Find Events</Button>
+          <Button width={"xl"}>Create an event</Button>
         </Link>
       </VStack>
     </Page>

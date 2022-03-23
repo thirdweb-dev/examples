@@ -1,34 +1,39 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Proof of attendance
 
-## Getting Started
+This is a simple implementation of signature based minting using thirdweb React SDK.
 
-First, run the development server:
+This app will let individual creators bring in their contracts (which they can deploy using the [thirdweb dashboard](https://thirdweb.com)) and create an event.
+
+Once they have created an event, people who have minting permission in the particular contract will be able to issue "vouchers" which the issuee can claim via the claim pages.
+
+## Get Started
+
+Clone it locally:
 
 ```bash
-npm run dev
-# or
-yarn dev
+npx degit thirdweb-dev/examples/poap poap
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The install the dependencies using:
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+```bash
+cd poap
+npm install
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## Overview
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+The app has three main pages:
 
-## Learn More
+1. `/create`: where the creator imports the contract
+2. `/issue`: where the creator issues vouchers
+3. `/claim`: where the issuee can claim the vouchers
 
-To learn more about Next.js, take a look at the following resources:
+For the sake of simplicity, we've used a local JSON file to store data, but you can use any database or storage you like.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+A brief overview of how it works:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1. The creator deploys an NFT Collection contract through [thirdweb dashboard](https://thirdweb.com) on **Mumbai** testnet.
+2. The creator goes to `/create` and imports this contract into the app
+3. The creator can now start issuing vouchers by clicking on the issue button. the can either limit the voucher to a specific address or make the voucher open to all. In both ways, the voucher can be used only once.
+4. The issuee can now visit the claim page and claim the voucher. They can be given either the voucher code or the link to the claiming page itself.

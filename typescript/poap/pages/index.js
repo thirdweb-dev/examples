@@ -2,7 +2,7 @@ import Page from "../components/Page";
 import { VStack, Button, Link } from "@chakra-ui/react";
 export default function Home() {
   return (
-    <Page title={"example"} subheading={""}>
+    <Page title={"example"} subheading={""} hideNav>
       <VStack>
         <Link href="/claim">
           <Button width={"xl"}>Claim NFT</Button>

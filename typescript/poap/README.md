@@ -35,5 +35,5 @@ A brief overview of how it works:
 
 1. The creator deploys an NFT Collection contract through [thirdweb dashboard](https://thirdweb.com) on **Mumbai** testnet.
 2. The creator goes to `/create` and imports this contract into the app
-3. The creator can now start issuing vouchers by clicking on the issue button. the can either limit the voucher to a specific address or make the voucher open to all. In both ways, the voucher can be used only once.
-4. The issuee can now visit the claim page and claim the voucher. They can be given either the voucher code or the link to the claiming page itself.
+3. The creator can now start issuing vouchers by clicking on the issue button and going to `/issue`. the can either limit the voucher to a specific address or make the voucher open to all. In both ways, the voucher can be used only once.
+4. The issuee can now visit the claim page at `/claim` and claim the voucher. They can be given either the voucher code or the link to the claiming page itself.

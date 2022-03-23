@@ -9,7 +9,6 @@ import {
   Text,
   Image,
   Badge,
-  Spinner,
   Center,
   Modal,
   ModalOverlay,
@@ -19,21 +18,37 @@ import {
   ModalHeader,
   toast,
   Link,
+  Spinner,
+  useToast,
+  useClipboard,
 } from "@chakra-ui/react";
 import parseIpfs from "../../utils/parseIpfs";
 
 import { useRouter } from "next/router";
-import { useNFTCollection } from "@thirdweb-dev/react";
+import { useNFTCollection, useChainId } from "@thirdweb-dev/react";
 import { useState, useEffect } from "react";
-import { NATIVE_TOKEN_ADDRESS } from "@thirdweb-dev/sdk";
 import { useDisclosure } from "@chakra-ui/react";
 export default function Create() {
+  const chainId = useChainId();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const router = useRouter();
+  const toast = useToast();
   const [event, setEvent] = useState(undefined);
   const [issuee, setIssuee] = useState(undefined);
   const [qrCode, setQrCode] = useState(undefined);
   const [claimURL, setClaimURL] = useState(undefined);
+  const [loading, setLoading] = useState(false);
+  const { onCopy, value } = useClipboard(claimURL?.split("=")[1]);
+  const copy = () => {
+    onCopy();
+    toast({
+      title: "Copied",
+      description: "Copied to clipboard",
+      status: "success",
+      duration: 5000,
+      isClosable: true,
+    });
+  };
   let nftCollection = useNFTCollection(event?.address);
   useEffect(() => {
     fetch(`/api/list?id=${router.query.id}`)
@@ -53,7 +68,18 @@ export default function Create() {
       });
   }, [router.query.id]);
   async function handleSubmit() {
-    alert("this might take some time!");
+    setLoading(true);
+    if (chainId !== 80001) {
+      toast({
+        title: "Invalid Chain",
+        description: `Make sure you are connected to the Mumbai. You are connected to ${chainId}`,
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+      });
+      setLoading(false);
+      return;
+    }
     const payload = {
       metadata: {
         name: event.name,
@@ -65,30 +91,59 @@ export default function Create() {
       to: issuee,
     };
     console.log(payload);
-    const signedPayload = await nftCollection.signature.generate(payload);
-    const result = await fetch(`/api/store`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        signedPayload,
-      }),
-    }).then(async (res) => await res.json());
+    await nftCollection.signature
+      .generate(payload)
+      .then(async (res) => {
+        const result = await fetch(`/api/store`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            signedPayload: res,
+          }),
+        })
+          .then(async (res) => await res.json())
+          .catch((err) => {
+            console.log(err);
+            toast({
+              title: "Error",
+              description: "An error occurred while creating the voucher.",
+              status: "error",
+              duration: 5000,
+              isClosable: true,
+            });
+            setLoading(false);
+          });
 
-    QRCode.toDataURL(
-      `${window.location.href.replace("issue", "claim")}?voucher=${result.id}`,
-      function (err, url) {
-        setClaimURL(
+        QRCode.toDataURL(
           `${window.location.href.replace("issue", "claim")}?voucher=${
             result.id
-          }`
+          }`,
+          function (err, url) {
+            setClaimURL(
+              `${window.location.href.replace("issue", "claim")}?voucher=${
+                result.id
+              }`
+            );
+            console.log(claimURL);
+            setQrCode(url);
+            setLoading(false);
+            onOpen();
+          }
         );
-        console.log(claimURL);
-        setQrCode(url);
-        onOpen();
-      }
-    );
+      })
+      .catch((err) => {
+        toast({
+          title: "Error",
+          description: err.message,
+          status: "error",
+          duration: 5000,
+          isClosable: true,
+        });
+        setLoading(false);
+        return;
+      });
   }
   return (
     <Page title={"Issue NFT"} subheading={"Issue NFTs for an event"}>
@@ -128,7 +183,7 @@ export default function Create() {
                 onChange={(e) => setIssuee(e.target.value)}
               />
               <Button width={"xs"} marginTop={5} onClick={handleSubmit}>
-                Issue NFTs
+                {loading ? <Spinner /> : "Issue NFTs"}
               </Button>
               <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
@@ -147,6 +202,9 @@ export default function Create() {
                       {" "}
                       <Button>Open URL</Button>
                     </Link>
+                    <Button onClick={copy} marginLeft={"20"}>
+                      Copy Voucher
+                    </Button>
                   </ModalBody>
                 </ModalContent>
               </Modal>

@@ -215,7 +215,6 @@ export default function WalletConnect() {
               <div />
             </VStack>
           </ModalBody>
-
         </ModalContent>
       </Modal>
     );

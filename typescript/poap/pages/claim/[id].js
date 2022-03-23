@@ -16,11 +16,13 @@ import {
 import parseIpfs from "../../utils/parseIpfs";
 
 import { useRouter } from "next/router";
-import { useNFTCollection } from "@thirdweb-dev/react";
+import { useNFTCollection, useChainId } from "@thirdweb-dev/react";
 import { useState, useEffect } from "react";
 export default function Create() {
+  const chainId = useChainId();
   const toast = useToast();
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
   const [event, setEvent] = useState(undefined);
   const [signature, setSignature] = useState(undefined);
   const nftCollection = useNFTCollection(event?.address);
@@ -40,22 +42,44 @@ export default function Create() {
   }, [router.query.voucher]);
 
   async function handleSubmit() {
+    setLoading(true);
+    if (chainId !== 80001) {
+      toast({
+        title: "Invalid Chain",
+        description: "Make sure you are connected to the Mumbai.",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+      });
+      setLoading(false);
+      return;
+    }
     const result = await fetch(`/api/get?id=${router.query.voucher}`).then(
       (res) => res.json()
     );
     if (result.success) {
-      if (!(await nftCollection.signature.verify(result.signature))) {
-        toast({
-          title: "Invalid Voucher",
-          description: "The voucher is either invalid or has expired.",
-          status: "error",
-          duration: 5000,
-          isClosable: true,
+      await nftCollection.signature
+        .mint(result.signature)
+        .then(() => {
+          toast({
+            title: "Voucher Claimed",
+            description: "You have successfully claimed the voucher.",
+            status: "success",
+            duration: 5000,
+            isClosable: true,
+          });
+        })
+        .catch((err) => {
+          toast({
+            title: "ERROR",
+            description: err.message,
+            status: "error",
+            duration: 5000,
+            isClosable: true,
+          });
         });
-      } else {
-        await nftCollection.signature.mint(result.signature);
-      }
     }
+    setLoading(false);
   }
 
   return (
@@ -68,7 +92,7 @@ export default function Create() {
           borderRadius="lg"
           overflow="hidden"
         >
-          <Image src={parseipfs(event.image)} alt={event.name} />
+          <Image src={parseIpfs(event.image)} alt={event.name} />
 
           <Box p="6">
             <Box display="flex" alignItems="baseline">
@@ -97,7 +121,7 @@ export default function Create() {
               ) : null}
               {signature ? (
                 <Button width={"xs"} marginTop={5} onClick={handleSubmit}>
-                  Claim NFT
+                  {loading ? <Spinner /> : "Claim NFT"}
                 </Button>
               ) : null}
             </Box>

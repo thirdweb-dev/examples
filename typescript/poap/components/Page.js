@@ -19,8 +19,6 @@ export default function Page({ title, heading, subheading, children }) {
         </p>
         {address ? children : <WalletConnect />}
       </main>
-
-
     </div>
   );
 }

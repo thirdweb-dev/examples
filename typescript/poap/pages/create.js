@@ -10,7 +10,9 @@ import {
 } from "@chakra-ui/react";
 import { useNFTCollection } from "@thirdweb-dev/react";
 import { useState } from "react";
+import { useRouter } from "next/router";
 export default function Create() {
+  const router = useRouter();
   const toast = useToast();
   const [contract, setContract] = useState("");
   const [name, setName] = useState("");
@@ -28,7 +30,8 @@ export default function Create() {
         image,
         address: contract,
       }),
-    }).then(() => {
+    }).then(async (event) => {
+      const data = await event.json();
       toast({
         title: "Success",
         description: "Contract added successfully",
@@ -36,6 +39,7 @@ export default function Create() {
         duration: 5000,
         isClosable: true,
       });
+      router.push(`/issue/${data.id}`);
     });
   }
   return (

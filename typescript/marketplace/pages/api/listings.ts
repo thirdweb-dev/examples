@@ -13,7 +13,7 @@ export default async function mint(
       {
         method: "GET",
         headers: {
-          "X-API-Key": process.env.MORALIS_KEY as string,
+          "X-API-Key": process.env.MORALIS_API_KEY as string,
         },
       }
     )

@@ -3,6 +3,7 @@
 node_modules
 .next
 .env.development
+.env
 
 #Hardhat files
 cache

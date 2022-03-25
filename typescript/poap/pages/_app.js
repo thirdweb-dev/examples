@@ -9,16 +9,6 @@ function App({ Component, pageProps }) {
   return (
     <ThirdwebProvider desiredChainId={8001}>
       <ChakraProvider>
-        <style global>{`
-              body {
-                background-color: #0e1012;
-                color: white;
-              }
-              button {
-                background-color: white;
-                color: black
-              }
-            `}</style>
         <Component {...pageProps} />
       </ChakraProvider>
     </ThirdwebProvider>

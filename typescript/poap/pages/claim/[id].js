@@ -54,7 +54,7 @@ export default function Create() {
       setLoading(false);
       return;
     }
-    const result = await fetch(`/api/get?id=${router.query.voucher}`).then(
+    const result = await fetch(`/api/get?id=${router.query.voucher || signature}`).then(
       (res) => res.json()
     );
     if (result.success) {

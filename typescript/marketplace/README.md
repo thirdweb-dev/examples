@@ -1,61 +1,38 @@
-## thirdweb-sdk-example
+# Marketplace Example
 
-A starter project with:
+This repo is a clonable project to set up a marketplace with auction and direct listing capabilities using Thirdweb marketplace contract. Users can also create ERC721 and ERC1115 NFTs just like in opensea. But unlike opensea everything is on-chain.
 
-- Web App: [Next.js](https://nextjs.org/), [Chakra UI](https://chakra-ui.com/) and [useDApp](https://github.com/EthWorks/useDApp).
-- Thirdweb SDK
+There are three Thirdweb contracts in it:
 
-#### Environment Variables
+- Thirdweb Marketplace Contract
+- Thirdweb NFT Collection Contract
+- Thirdweb NFT Edition Contract
 
-```
-PRIVATE_KEY=<wallet private key with minter role>
-NEXT_PUBLIC_RPC_URL=<alchemy / infura / rpc url. defaults to Polygon Mumbai public rpc if left empty>
-NEXT_PUBLIC_NFT_MODULE_ADDRESS=<NFT module address from thirdweb.com>
-```
+### Technologies used
 
-## Usage (pseudocode)
+     * The app uses [Moralis](https://moralis.io) APIs to create user profiles and list NFTs which they hold regardless of whether they’re listed on the marketplace or not.
+     * Chakra UI
 
-### Client Side (React):
+## Get Started
 
-Fetching all NFTs available in the module. [Source](https://github.com/thirdweb-dev/nftlabs-sdk-example/blob/5dcd73001061ef0680c46fd91861dac893928a6e/components/SwordList.tsx#L12-L29)
+Clone it locally:
 
-```ts
-const sdk = new ThirdwebSDK(library.getSigner());
-const nft = sdk.getNFTModule(
-  process.env.NEXT_PUBLIC_NFT_MODULE_ADDRESS as string
-);
-...
-const tokens = await nft.getAll();
+```bash
+npx degit thirdweb-dev/examples/marketplace marketplace
 ```
 
-### Server Side (REST API Handler):
+The install the dependencies using:
 
-Minting NFTs with random properties.
-[Source](https://github.com/thirdweb-dev/nftlabs-sdk-example/blob/5dcd73001061ef0680c46fd91861dac893928a6e/pages/api/mint_sword.ts#L42-L64)
-
-```ts
-// connect to wallet with minter permission
-const sdk = new ThirdwebSDK(
-  new ethers.Wallet(
-    process.env.PRIVATE_KEY as string,
-    ethers.getDefaultProvider(process.env.NEXT_PUBLIC_RPC_URL)
-  )
-);
-
-const nft = sdk.getNFTModule(
-  process.env.NEXT_PUBLIC_NFT_MODULE_ADDRESS as string
-);
-
-...
-const token = await nft.mintTo(account, {
-  name: `${type} sword - ${rarity}`,
-  description: `The special ${type} sword crafted for ${account}`,
-  image: image,
-  properties: {
-    type: type,
-    rarity: rarity,
-    element: sample(["fire", "water", "earth", "lightning", "wind"]),
-    attack: getRandomInt(10, 30),
-  },
-})
+```bash
+cd marketplace
+npm install
 ```
+
+## Overview
+
+The app has the following components:
+
+- Marketplace front-page - has all the listings
+- Profile page - see all the NFTs you hold (like in opensea)
+- Create NFT page - let users also create NFTs using the NFT contracts.
+- Project page - list down all the listings from a particular NFT collection.

@@ -7,7 +7,7 @@ import {
   Box,
   useColorMode,
 } from "@chakra-ui/react";
-import { MintSwordButton } from "components/MintSwordButton";
+import { CreateButton } from "components/CreateButton";
 import { Wallet } from "components/Wallet";
 import { useAddress } from "@thirdweb-dev/react";
 import { ConnectWalletButton } from "components/ConnectWallet";
@@ -61,7 +61,7 @@ export const Page = ({ children, showConfetti }: any) => {
                 <Wallet />
 
                 <Box mx={"5"}>
-                  <MintSwordButton />
+                  <CreateButton />
                 </Box>
 
                 <Box mx={"5"}>

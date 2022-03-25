@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
   Button,
-  useToast,
   useDisclosure,
   Modal,
   ModalOverlay,
@@ -18,57 +17,21 @@ import {
 import { useAddress } from "@thirdweb-dev/react";
 import { ConnectWalletButton } from "./ConnectWallet";
 
-export const MintSwordButton = () => {
+export const CreateButton = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [listings, setListings] = useState<any>(undefined);
-  const toast = useToast();
   const address = useAddress();
-  const onMintHandler = async () => {
-    toast({
-      title: "Minting...",
-      status: "info",
-      duration: 9000,
-      isClosable: true,
-    });
-    setLoading(true);
-    // make a backend server api request to mint an NFT
-    await fetch("/api/mint_sword", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({ address }),
-    }).then((response) => {
-      setLoading(false);
 
-      if (response.status === 200) {
-        toast({
-          title: "Success",
-          description: "Your sword has been minted",
-          status: "success",
-          duration: 9000,
-          isClosable: true,
-        });
-      } else {
-        toast({
-          title: "Error",
-          description: "Something went wrong",
-          status: "error",
-          duration: 9000,
-          isClosable: true,
-        });
-      }
-    });
-  };
   useEffect(() => {
+    setLoading(false);
     fetch(`/api/listings?Address=${address}`)
       .then(async (resp) => resp.json())
-      .then((resp) => setListings(resp.result));
+      .then((resp) => setListings(resp.result))
+      .then(() => setLoading(false));
   }, [isOpen]);
 
-  // render the button to mint a sword NFT
   return address ? (
     <>
       <Button onClick={onOpen}>Create Listing</Button>
@@ -89,7 +52,11 @@ export const MintSwordButton = () => {
                     .map((item: any) => (
                       <Box key={item?.image} border="1px" padding={4}>
                         <Image
-                          src={item?.image == null? "https://via.placeholder.com/400" : item?.image}
+                          src={
+                            item?.image == null
+                              ? "https://via.placeholder.com/400"
+                              : item?.image
+                          }
                         />
                       </Box>
                     ))}

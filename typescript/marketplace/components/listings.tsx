@@ -36,14 +36,14 @@ export const Listings = () => {
         {!loading ? (
           nfts.length ? (
             <SimpleGrid columns={4} spacing={10}>
-              {nfts.map((sword: any) => (
-                <Link href={`/listing/${sword.id}`} key={sword.id} passHref >
+              {nfts.map((item: any) => (
+                <Link href={`/listing/${item.id}`} key={item.id} passHref>
                   <Box border="1px" padding={4}>
                     <Flex align="center">
                       <Box>
-                        <Image src={sword.asset.image} />
-                        <Text fontWeight="bold">{sword.asset.name}</Text>
-                        <Text fontSize="sm">{sword.asset.description}</Text>
+                        <Image src={item.asset.image} />
+                        <Text fontWeight="bold">{item.asset.name}</Text>
+                        <Text fontSize="sm">{item.asset.description}</Text>
                       </Box>
                     </Flex>
                   </Box>
@@ -52,7 +52,7 @@ export const Listings = () => {
             </SimpleGrid>
           ) : (
             <>
-              <Text>No swords</Text>
+              <Text>No Items</Text>
             </>
           )
         ) : (

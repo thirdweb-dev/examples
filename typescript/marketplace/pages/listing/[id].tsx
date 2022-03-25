@@ -6,7 +6,6 @@ import {
   Image,
   Text,
   Heading,
-  Center,
   Button,
   useToast,
   Input,

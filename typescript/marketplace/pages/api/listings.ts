@@ -1,5 +1,4 @@
-import { ThirdwebSDK } from "@thirdweb-dev/sdk";
-import { ethers } from "ethers";
+
 import { NextApiRequest, NextApiResponse } from "next";
 
 // This depend on your HTTP Server setup. In this example, we're using next.js
@@ -14,8 +13,7 @@ export default async function mint(
       {
         method: "GET",
         headers: {
-          "X-API-Key":
-            "gWhXCyk4w6DeyPqJizoiM7c0I4NaQZNYpVoCw0LRjJrUekCb7Ac55fL6ztxoIjJJ",
+          "X-API-Key": process.env.MORALIS_KEY as string,
         },
       }
     )

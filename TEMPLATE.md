@@ -36,5 +36,5 @@ npm run build # or any other suitable command
 
 ### Resources
 
-[docs](https://docs.thirdeb.com/react)
-Stuck somewhere? Join the [community discord](https://discord.gg/thirdweb).
+- [Official Thirdweb Docs](https://docs.thirdeb.com)
+- [Community Discord](https://discord.gg/thirdweb)

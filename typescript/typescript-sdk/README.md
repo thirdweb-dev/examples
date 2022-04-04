@@ -16,7 +16,6 @@ Then install the dependencies:
 npm install
 ```
 
-
 ### Local Development
 
 Make sure to set up valid environment variables. Copy .env.example into .env and change the values to your needs.
@@ -27,10 +26,7 @@ Run the following command to run the app locally:
 npx ts-node sdk.ts
 ```
 
-
 ### Building for production
-
-
 
 ```
 npx tsc sdk.ts
@@ -38,7 +34,5 @@ npx tsc sdk.ts
 
 ### Resources
 
-[docs](https://docs.thirdweb.com/typescript)
-
-
-Stuck somewhere? Join the [community discord](https://discord.gg/thirdweb).
+- [Official Thirdweb Docs](https://docs.thirdeb.com)
+- [Community Discord](https://discord.gg/thirdweb)

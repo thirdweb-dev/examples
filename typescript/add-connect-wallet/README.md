@@ -16,13 +16,11 @@ Then install the dependencies:
 npm install
 ```
 
-
 ### Technologies Used
- - nextjs
+
+- nextjs
 
 ### Local Development
-
-
 
 Run the following command to run the app locally:
 
@@ -30,10 +28,7 @@ Run the following command to run the app locally:
 npm run dev
 ```
 
-
 ### Building for production
-
-
 
 ```
 npm run build
@@ -41,7 +36,5 @@ npm run build
 
 ### Resources
 
-[docs](https://docs.thirdeb.com/react)
-
-
-Stuck somewhere? Join the [community discord](https://discord.gg/thirdweb).
+- [Official Thirdweb Docs](https://docs.thirdeb.com)
+- [Community Discord](https://discord.gg/thirdweb)

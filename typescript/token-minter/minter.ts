@@ -1,31 +1,38 @@
 // Importing libraries
-import { ThirdwebSDK } from "@3rdweb/sdk";
+import { ThirdwebSDK } from "@thirdweb-dev/sdk";
 import { ethers } from "ethers";
 
 //Importing private key
-require('dotenv').config();
+require("dotenv").config();
+
+// Your wallet private key (note: using private key is not recommended)
+const PRIVATE_KEY = process.env.PRIVATE_KEY as string;
+// your token contract address
+const CONTRACT_ADDRESS = process.env.CONTRACT_ADDRESS as string;
+
+if (!PRIVATE_KEY) {
+  throw "no private key found! did you forget to set it in .env file?";
+}
+if (!CONTRACT_ADDRESS) {
+  throw "no contract address found! did you forget to set it in .env file?";
+}
 
 //Instantiate 3rdweb SDK
 const sdk = new ThirdwebSDK(
   new ethers.Wallet(
-    // Your wallet private key
-    process.env.PRIVATE_KEY as string,
+    PRIVATE_KEY,
     // RPC URL, we'll use Polygon Mumbai
     ethers.getDefaultProvider("https://rpc-mumbai.maticvigil.com")
   )
 );
 
-// Instantiate Token module
-const token = sdk.getCurrencyModule("0xFf5f08cA7c5b0287A349517fa4B4243BB13229b9");
-
-// Set the amount of currency you want to mint
-// (Actual amount, number of decimals)
-const amount = ethers.utils.parseUnits("1000", 18);
+// Instantiate Token contract with your token contract address
+const token = sdk.getToken(CONTRACT_ADDRESS);
 
 // Minting the currency, 1000 Test coin
 const mintCurrency = async () => {
   try {
-    await token.mint(amount);
+    await token.mint(1000);
     console.log("Minted 1000 Test coin");
   } catch (err) {
     console.log(err);

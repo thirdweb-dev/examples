@@ -18,3 +18,8 @@ This project shows you how to make a gasless NFT drop using the Edition Drop Con
 
 - `yarn install`
 - `yarn dev`
+
+### Resources
+
+- [Official Thirdweb Docs](https://docs.thirdeb.com)
+- [Community Discord](https://discord.gg/thirdweb)

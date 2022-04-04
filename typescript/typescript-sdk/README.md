@@ -1,13 +1,13 @@
-# claim button component using thirdweb React SDK
+# thirdweb SDK starter
 
-An example implementation of claim button component for Drop contracts using thirdweb React SDK
+A typescript starter for thirdweb SDK
 
 ### Installation
 
 Clone this project locally using [degit](https://npmjs.org/package/degit):
 
 ```bash
-npx degit https://github.com/thirdweb-dev/examples/tree/main/typescript/claim-button-react
+npx degit https://github.com/thirdweb-dev/examples/tree/main/typescript/typescript-sdk
 ```
 
 Then install the dependencies:
@@ -16,22 +16,20 @@ Then install the dependencies:
 npm install
 ```
 
-### Technologies Used
-
-- NextJS
-
 ### Local Development
+
+Make sure to set up valid environment variables. Copy .env.example into .env and change the values to your needs.
 
 Run the following command to run the app locally:
 
 ```
-npm run dev
+npx ts-node sdk.ts
 ```
 
 ### Building for production
 
 ```
-npm run build
+npx tsc sdk.ts
 ```
 
 ### Resources

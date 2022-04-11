@@ -1,0 +1,76 @@
+
+.body {
+  margin: 0;
+}
+
+.myheader {
+  display: flex;
+  /* padding-left: 500px; */
+  background-color: rgb(0, 53, 113);
+  justify-content: space-around;
+  color:white
+}
+
+.wallet {
+  display: flex;
+  margin-left: auto;
+}
+
+.hero {
+  display: flex;
+  padding: 50px;
+  background-color: rgb(20, 23, 27);
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hero_text {
+  padding-right: 100px;
+  padding-left: 90px;
+  font-size: 60pt;
+  text-align: center;
+  color: white;
+}
+
+.nfts {
+  display: flex;
+  flex-direction: column;
+  font-size: xx-large;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 100px;
+}
+
+.nfts_image {
+  display: flex;
+  flex-direction: column;
+}
+
+.mintnft {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20%;
+}
+
+.mintnftbutton {
+    text-align: center;
+  border: none;
+  outline: none;
+  background-color: purple;
+  padding: 20px;
+  position: relative;
+  border-radius: 8px;
+  /* letter-spacing: 0.7px; */
+  background-color: #5086bd;
+  color: #fff;
+  font-size: 21px;
+  font-family: "Lato", sans-serif;
+  cursor: pointer;
+  box-shadow: rgba(0, 9, 61, 0.2) 0px 4px 8px 0px;
+
+}
+

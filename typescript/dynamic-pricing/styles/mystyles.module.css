@@ -57,7 +57,7 @@
 }
 
 .mintnftbutton {
-    text-align: center;
+  text-align: center;
   border: none;
   outline: none;
   background-color: purple;
@@ -71,6 +71,9 @@
   font-family: "Lato", sans-serif;
   cursor: pointer;
   box-shadow: rgba(0, 9, 61, 0.2) 0px 4px 8px 0px;
-
 }
 
+.mintnftbutton:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}

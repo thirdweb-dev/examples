@@ -13,23 +13,7 @@ const Home: NextPage = () => {
   const nftDrop = useNFTDrop('0x82747Bd4e435C9D5cF2342c8361B19910259C264');
   const [hasClaimedNFT, setHasClaimedNFT] = useState(false);
   const [isClaiming, setIsClaiming] = useState(false);
-  const [claimed, setClaimed] = useState(0);
   const [price, setPrice] = useState('0');
-
-  useEffect(() => {
-    if (!nftDrop) return;
-
-    const checkSupply = async () => {
-      try {
-        const supply = await nftDrop?.totalClaimedSupply();
-        // todo setClaimed()
-        console.log(supply);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    checkSupply();
-  }, [nftDrop]);
 
   useEffect(() => {
     if (!nftDrop) return;
@@ -44,28 +28,23 @@ const Home: NextPage = () => {
       }
     };
     getPrice();
-  }, [nftDrop]);
-
-  // define the same max claim-limit as your first maxclaimcondition
-  const claimLimit = 48;
+  }, [nftDrop, hasClaimedNFT]);
 
   const mintNft = async () => {
-/*     try {
+    try {
+      setIsClaiming(true);
       await nftDrop?.claim(1);
+      setHasClaimedNFT(true);
     } catch (error) {
       console.log(error);
-      return;
-    } */
+    } finally {
+      setIsClaiming(false);
+    }
 
-    const totalClaimedSupply = (
-      await nftDrop?.totalClaimedSupply()
-    )?.toNumber();
-    if (totalClaimedSupply === claimLimit) {
-      try {
-        await fetch('/api/update-pricing');
-      } catch (error) {
-        console.log(error);
-      }
+    try {
+      await fetch('/api/update-pricing');
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -105,10 +84,10 @@ const Home: NextPage = () => {
         {/* mint NFT button */}
         <div className={styles.nfts}>
           <div>
-            <p>Price is {price} ETH</p>
+            {price !== "0" && <p>Price is {price} ETH</p>}
           </div>
 
-          <button className={styles.mintnftbutton} onClick={mintNft}>
+          <button className={styles.mintnftbutton} onClick={mintNft} disabled={isClaiming}>
             Click here to mint NFT
           </button>
         </div>

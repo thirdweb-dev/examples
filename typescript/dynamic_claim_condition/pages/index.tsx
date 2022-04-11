@@ -87,7 +87,7 @@ const Home: NextPage = () => {
     console.log(phase1)
     console.log(price_3)
     console.log(all_claimed?.length)
-    if (all_claimed.length = phase1) {
+    if (all_claimed.length === phase1 as unknown as Number) {
       await fetch("/api/condition", {
         method: "POST",
       });

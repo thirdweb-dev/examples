@@ -2,3 +2,9 @@
 *node_modules
 *package-lock.json
 *yarn.lock
+
+*.env
+*.env.local
+*.env.development.local
+*.env.test.local
+*.env.production.local

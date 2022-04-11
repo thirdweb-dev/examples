@@ -1,6 +1,6 @@
 import { useAddress, useDisconnect, useMetamask } from '@thirdweb-dev/react';
 import type { NextPage } from 'next';
-import styles from '../styles/mystyles.module.css';
+import styles from '../styles/styles.module.css';
 import Image from 'next/image';
 import tw from '../public/tw.png';
 import { useNFTDrop } from '@thirdweb-dev/react';
@@ -51,7 +51,7 @@ const Home: NextPage = () => {
   if (!address) {
     return (
       <div className={styles.mintnft}>
-        <button className={styles.mintnftbutton} onClick={connectWithMetamask}>
+        <button className={styles.mintNftButton} onClick={connectWithMetamask}>
           Connect with Metamask
         </button>
       </div>
@@ -61,36 +61,37 @@ const Home: NextPage = () => {
   return (
     <div className={styles.body}>
       <div>
-        <div className={styles.myheader}>
+        <div className={styles.header}>
           <p>Welcome: {address}</p>
-          <button className={styles.mintnftbutton} onClick={disconnectWallet}>
+          <button className={styles.mintNftButton} onClick={disconnectWallet}>
             Disconnect Wallet
           </button>
         </div>
         {/* big image and title */}
         <div className={styles.hero}>
+          <div className={styles.imageContainer}>
           <Image
-            className={styles.hero_image}
             src={tw}
-            alt="Picture of the author"
-            width="700px"
-            height="500px"
-          />
-          <div>
-            <p className={styles.hero_text}>Minting has started!</p>
-          </div>
-        </div>
-
-        {/* mint NFT button */}
-        <div className={styles.nfts}>
+            alt="Image of the NFT"
+            />
+            </div>
+          <div className={styles.heroRight}>
+            <p className={styles.heroText}>Minting has started!</p>
+              {/* mint NFT button */}
+            <div className={styles.nfts}>
           <div>
             {price !== "0" && <p>Price is {price} ETH</p>}
           </div>
 
-          <button className={styles.mintnftbutton} onClick={mintNft} disabled={isClaiming}>
+          <button className={styles.mintNftButton} onClick={mintNft} disabled={isClaiming}>
             Click here to mint NFT
           </button>
         </div>
+          </div>
+        </div>
+
+
+
       </div>
     </div>
   );

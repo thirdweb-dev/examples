@@ -1,13 +1,16 @@
 
 .body {
   margin: 0;
+  background-color: rgb(20, 23, 27);
+  min-height: 100vh;
 }
 
-.myheader {
+.header {
   display: flex;
-  /* padding-left: 500px; */
   background-color: rgb(0, 53, 113);
   justify-content: space-around;
+  align-items: center;
+  padding: 1rem 0;
   color:white
 }
 
@@ -18,18 +21,24 @@
 
 .hero {
   display: flex;
-  padding: 50px;
-  background-color: rgb(20, 23, 27);
+  padding: 66px 50px;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 }
 
-.hero_text {
-  padding-right: 100px;
-  padding-left: 90px;
-  font-size: 60pt;
-  text-align: center;
+.imageContainer {
+  width: 30vw;
+}
+
+.heroRight {
   color: white;
+  padding-left: 90px;
+  text-align: center;
+}
+
+.heroText {
+  font-size: 4rem;
+  margin-bottom: 0;
 }
 
 .nfts {
@@ -43,12 +52,7 @@
   margin: 100px;
 }
 
-.nfts_image {
-  display: flex;
-  flex-direction: column;
-}
-
-.mintnft {
+.mintNft {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -56,7 +60,7 @@
   margin: 20%;
 }
 
-.mintnftbutton {
+.mintNftButton {
   text-align: center;
   border: none;
   outline: none;
@@ -64,7 +68,6 @@
   padding: 20px;
   position: relative;
   border-radius: 8px;
-  /* letter-spacing: 0.7px; */
   background-color: #5086bd;
   color: #fff;
   font-size: 21px;
@@ -73,7 +76,7 @@
   box-shadow: rgba(0, 9, 61, 0.2) 0px 4px 8px 0px;
 }
 
-.mintnftbutton:disabled {
+.mintNftButton:disabled {
   background-color: #ccc;
   cursor: not-allowed;
 }

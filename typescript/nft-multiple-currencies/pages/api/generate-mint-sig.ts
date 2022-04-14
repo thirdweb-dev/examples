@@ -12,22 +12,18 @@ const generateMintSignature = async (
   const sdk = new ThirdwebSDK(
     new ethers.Wallet(
       process.env.PRIVATE_KEY as string,
-      ethers.getDefaultProvider(
-        "https://polygon-mumbai.g.alchemy.com/v2/TcwiP2BV-1oRIrjlG5aPceb43auHnGHC"
-      )
+      ethers.getDefaultProvider(process.env.ALCHEMY_API_URL)
     )
   );
 
-  const editionContract = sdk.getEdition(
-    "0x09fd447A2E065c9CA83934088D64372dDE15EE87"
-  );
+  const edition = sdk.getEdition("0x4ebCf39BCeEA3C9790605BF292B4a2b8811C93eD");
 
   const token = nft.tokens.find((t) => t.name === tokenName)
     ? nft.tokens.find((t) => t.name === tokenName)
     : nft.tokens.find((t) => t.name === "MATIC");
 
   try {
-    const signedPayload = await editionContract.signature.generate({
+    const signedPayload = await edition.signature.generate({
       tokenId: tokenId,
       quantity: "1",
       metadata: "",

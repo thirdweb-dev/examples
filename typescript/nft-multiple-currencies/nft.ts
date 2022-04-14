@@ -1,10 +1,10 @@
 import { NATIVE_TOKEN_ADDRESS } from "@thirdweb-dev/sdk";
 
 export const nft = {
-  name: "Test",
-  description: "Test",
+  name: "My cool NFT",
+  description: "This is the description for my cool NFT",
   image:
-    "https://ipfs.thirdweb.com/ipfs/QmPocpnbo2QQDHz3QAHFqCNSjwfdLmFtTTzoLMzKX88Ghs/0.jpg",
+    "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80",
   id: "0",
   tokens: [
     {

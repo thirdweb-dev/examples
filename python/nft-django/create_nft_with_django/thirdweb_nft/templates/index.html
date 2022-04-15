@@ -1,0 +1,78 @@
+{% load static %}
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="{% static 'css/thirdweb_nft.css' %}">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>  
+function preview_image(event) 
+{
+ var reader = new FileReader();
+ reader.onload = function()
+ {
+  var output = document.getElementById('output_image');
+  output.src = reader.result;
+ }
+ reader.readAsDataURL(event.target.files[0]);
+}
+  </script>
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!--Simple Form-->
+    <div class="myheader">
+    <p>DJANGO NFT MINTER</p>
+    </div>
+
+    
+    <div class="card">
+      <h2 class="my-4">Mint a new NFT</h2>
+ 
+        <img class="preview" id="output_image">
+
+    
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="inputbox">
+      <input type="text" id="name" name="name" value="NFT name">
+        </div>
+      <div class="inputbox">
+      <input type="text" id="description" name="description" value="NFT description">
+      </div>
+      <div class="inputbox">
+      <input type="file" name="home" id="home" multiple class="form-control-file" accept="image/*"
+      onchange="preview_image(event)">
+      </div>
+      <div class="">
+      <button type="submit">Submit</button>
+     </div>
+    </form>
+
+  </div>
+
+    <br>
+    {% if file_url %}
+    <h2 class="my-4">NFTs minted: {{ file_url }}</h2>
+    {% endif %}
+
+    {% for nft in nft_data %}
+
+    <h2 class="my-4">NFTs minted: {{ nft.metadata.image }}</h2>
+    {% endfor %}
+    {% for image in nft_new_meta %}
+    <img src="{{ image }}" alt="Girl in a jacket" width="500" height="600">
+    {% endfor %}
+    <!--See Image Uploaded-->
+
+</body>
+
+</html>
+
+
+

@@ -6,7 +6,7 @@ This project shows you how to make an ERC-1555 drop where users can pay with mul
 
 ### Technologies Used
 
-- Thirdweb
+- thirdweb
 - Next.js
 
 ### thirdweb SDK Functionality Used

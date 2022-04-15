@@ -18,9 +18,11 @@ const generateMintSignature = async (
 
   const edition = sdk.getEdition("0x4ebCf39BCeEA3C9790605BF292B4a2b8811C93eD");
 
-  const token = nft.tokens.find((t) => t.name === tokenName)
-    ? nft.tokens.find((t) => t.name === tokenName)
-    : nft.tokens.find((t) => t.name === "MATIC");
+  const getToken = (tokenName: string) => {
+    return nft.tokens.find((t) => t.name === tokenName);
+  };
+
+  const token = getToken(tokenName) ? getToken(tokenName) : getToken("MATIC");
 
   try {
     const signedPayload = await edition.signature.generate({

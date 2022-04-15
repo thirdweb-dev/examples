@@ -17,20 +17,28 @@ const Home: NextPage = () => {
 
     const signedPayload = (await signedPayloadReq.json()).signedPayload;
 
-    console.log(signedPayload);
-
-    const nft = await edition?.signature.mint(signedPayload);
-
-    console.log(nft);
-
-    return nft;
+    try {
+      const nft = await edition?.signature.mint(signedPayload);
+      return nft;
+    } catch (e) {
+      console.error(e);
+      return null;
+    }
   };
 
   return (
     <div>
       {address ? (
         <div>
-          <img src={nft.image} alt={nft.name} width="200px" height="100%" />
+          <img
+            src={nft.image.replace(
+              "ipfs://",
+              "https://ipfs.thirdweb.com/ipfs/"
+            )}
+            alt={nft.name}
+            width="200px"
+            height="100%"
+          />
           <div>
             <p>Name: {nft.name}</p>
             <p>Description: {nft.description}</p>

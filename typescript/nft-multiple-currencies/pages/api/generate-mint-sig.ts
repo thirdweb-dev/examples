@@ -26,7 +26,6 @@ const generateMintSignature = async (
     const signedPayload = await edition.signature.generate({
       tokenId: tokenId,
       quantity: "1",
-      metadata: "",
       to: address,
       currencyAddress: token?.address,
       price: token?.price,

@@ -1,6 +1,5 @@
 {% load static %}
 <html lang="en">
-
 <head>
   <link rel="stylesheet" href="{% static 'css/thirdweb_nft.css' %}">
   <meta charset="UTF-8">
@@ -27,12 +26,12 @@ function preview_image(event)
 
     <!--Simple Form-->
     <div class="myheader">
-    <p>DJANGO NFT MINTER</p>
+    <p>DJANGO NFT MINTER ⚙️</p>
     </div>
 
     
     <div class="card">
-      <h2 class="my-4">Mint a new NFT</h2>
+      <p class="cardtitle">🔨 Mint a new NFT </p>
  
         <img class="preview" id="output_image">
 
@@ -55,20 +54,6 @@ function preview_image(event)
     </form>
 
   </div>
-
-    <br>
-    {% if file_url %}
-    <h2 class="my-4">NFTs minted: {{ file_url }}</h2>
-    {% endif %}
-
-    {% for nft in nft_data %}
-
-    <h2 class="my-4">NFTs minted: {{ nft.metadata.image }}</h2>
-    {% endfor %}
-    {% for image in nft_new_meta %}
-    <img src="{{ image }}" alt="Girl in a jacket" width="500" height="600">
-    {% endfor %}
-    <!--See Image Uploaded-->
 
 </body>
 

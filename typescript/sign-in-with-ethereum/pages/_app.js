@@ -11,9 +11,9 @@ const connectors = {
 const MyApp = ({ Component, pageProps }) => {
   return (
     <ChakraProvider>
-    <ThirdwebProvider desiredChainId={ChainId.Mainnet}>
-      <YourApp />
-    </ThirdwebProvider>
+      <ThirdwebProvider desiredChainId={ChainId.Mainnet}>
+        <Component {...pageProps} />
+      </ThirdwebProvider>
     </ChakraProvider>
   );
 };

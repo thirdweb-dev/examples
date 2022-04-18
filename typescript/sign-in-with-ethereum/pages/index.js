@@ -1,5 +1,5 @@
-
-import { useAddress, useDisconnect, useMetamask } from "@thirdweb-dev/react";
+import { useAddress, useMetamask } from "@thirdweb-dev/react";
+import Profile from "../components/Profile";
 
 export const ConnectMetamaskButtonComponent = () => {
   // get a function to connect to a particular wallet
@@ -17,15 +17,14 @@ export const ConnectMetamaskButtonComponent = () => {
     </div>
   );
 };
-/*import Profile from "../components/Profile";
-*/
+
 export default function Home() {
   const address = useAddress();
 
   return (
     <div>
-      <ConnectMetamaskButtonComponent/>
-      {address ? <Profile></Profile> : <h1>Please connect your wallet</h1>}
+      <ConnectMetamaskButtonComponent />
+      {address ? <Profile /> : <h1>Please connect your wallet</h1>}
     </div>
   );
 }

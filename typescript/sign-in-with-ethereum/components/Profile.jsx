@@ -1,11 +1,11 @@
-import { useAddress, useProvider } from "@thirdweb-dev/react";
+import { useAddress, useSigner } from "@thirdweb-dev/react";
 
 import { Profiler, useCallback, useEffect, useState } from "react";
 import { Button, useToast, Spinner, Input } from "@chakra-ui/react";
 
 export default function Profile() {
   const address = useAddress();
-  const provider = useProvider();
+  const signer = useSigner();
   const [jwt, setJwt] = useState(null);
   const [username, setUsername] = useState(null);
 
@@ -43,7 +43,6 @@ export default function Profile() {
 
   const getJwt = useCallback(async () => {
     const challenge = await getChallenge();
-    const signer = provider.getSigner();
     console.log("Signer = ", signer);
 
     const signedChallenge = await signer.signMessage(challenge);
@@ -71,7 +70,7 @@ export default function Profile() {
         title: "Failed to fetch the JWT",
       });
     }
-  }, [getChallenge, provider, address]);
+  }, [getChallenge, signer, address]);
 
   const updateUsername = useCallback(async () => {
     try {
@@ -92,9 +91,9 @@ export default function Profile() {
       }
 
       toast({
-          status: 'success',
-          title: 'Updated profile'
-      })
+        status: "success",
+        title: "Updated profile",
+      });
     } catch (err) {
       toast({
         status: "error",
@@ -105,14 +104,14 @@ export default function Profile() {
   }, [username, jwt]);
 
   useEffect(() => {
-    if (jwt !== null) {
+    if (jwt !== null || signer == null) {
       return;
     }
 
     (async () => {
       await getJwt();
     })();
-  }, [jwt]);
+  }, [jwt, signer]);
 
   useEffect(() => {
     if (username !== null || jwt === null) {
@@ -134,14 +133,13 @@ export default function Profile() {
   }, [username, jwt]);
 
   if (!jwt) {
-    return <Spinner size="lg" color="black"></Spinner>;
+    return <Spinner size="lg" color="white"></Spinner>;
   }
 
   return (
     <div
       style={{
         padding: "20px",
-        backgroundColor: "#f5f5f5",
       }}
     >
       <h1>Your address = {address}</h1>

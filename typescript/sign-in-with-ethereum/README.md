@@ -42,6 +42,10 @@ npm run dev
 npm run build
 ```
 
+### Portal Guide
+
+- [Sign-in with Ethereum using thirdweb connect wallet](https://portal.thirdweb.com/guides/sign-in-with-ethereum-using-thirdweb-connectwallet)
+
 ### Resources
 
 - [Official Thirdweb Docs](https://docs.thirdeb.com)

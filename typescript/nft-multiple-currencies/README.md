@@ -19,6 +19,10 @@ This project shows you how to make an ERC-1555 drop where users can pay with mul
 - `yarn install`
 - `yarn dev`
 
+### Portal Guide
+
+- [Sell your NFT in multiple currencies at the same time](https://portal.thirdweb.com/guides/sell-nft-multiple-currencies)
+
 ### Resources
 
 - [Official Thirdweb Docs](https://docs.thirdeb.com)

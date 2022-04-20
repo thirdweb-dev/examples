@@ -34,6 +34,10 @@ npm run dev
 npm run build
 ```
 
+### Portal Guide
+
+- [Create an early access NFT with TypeScript and React](https://portal.thirdweb.com/guides/early-access-nft-with-typescript)
+
 ### Resources
 
 - [Official Thirdweb Docs](https://docs.thirdeb.com)

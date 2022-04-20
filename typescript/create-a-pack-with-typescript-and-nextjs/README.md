@@ -34,6 +34,10 @@ npm run dev
 npm run build
 ```
 
+### Portal Guides
+
+- [Create a Pack with TypeScript and Next.js](https://portal.thirdweb.com/guides/create-a-pack-with-typescript-and-nextjs)
+
 ### Resources
 
 - [Official Thirdweb Docs](https://docs.thirdeb.com)

@@ -40,6 +40,10 @@ npm run dev
 npm run build
 ```
 
+### Portal Guide
+
+- [Minting NFTs on demand using signatures](https://portal.thirdweb.com/guides/on-demand-minting)
+
 ### Resources
 
 - [Official Thirdweb Docs](https://docs.thirdeb.com)

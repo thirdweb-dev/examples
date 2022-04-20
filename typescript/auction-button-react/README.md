@@ -34,6 +34,10 @@ npm run dev
 npm run build
 ```
 
+### Portal Guide
+
+- [Build an auction button in React for your dApp with TypeScript](https://portal.thirdweb.com/guides/auction-button-react)
+
 ### Resources
 
 - [Official Thirdweb Docs](https://docs.thirdeb.com)

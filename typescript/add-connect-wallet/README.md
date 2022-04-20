@@ -34,6 +34,10 @@ npm run dev
 npm run build
 ```
 
+### Portal Guide
+
+- [Add a connect wallet button to your website](https://portal.thirdweb.com/guides/add-connectwallet-to-your-website)
+
 ### Resources
 
 - [Official Thirdweb Docs](https://docs.thirdeb.com)

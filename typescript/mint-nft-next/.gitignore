@@ -1,9 +1,0 @@
-.DS_Store
-
-node_modules
-.next
-.env.development
-
-#Hardhat files
-cache
-artifacts

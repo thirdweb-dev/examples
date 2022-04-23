@@ -1,40 +1,44 @@
-# Thirdweb Examples
+# Early Access NFT Example
 
-## Structure
+Early Access NFT Example
 
-- Example implementations are scoped by language
-- Each example project within one of the top-level language folders should be individually clone-able
-- Each example project has to include a `README.md` in its root which needs to contain:
-  - name of the example
-  - description of the example
-  - which technologies it uses _outside of_ the thirdweb sdk
-  - what thirdweb sdk methods are utilized in the example
-  - how to run the example project locally after cloning
+### Installation
 
-### Example README
+Clone this project locally using [degit](https://npmjs.org/package/degit):
 
-```md
-# thirdweb <example> Project
+```bash
+npx degit https://github.com/thirdweb-dev/examples/tree/main/typescript/early-access-nft
+```
 
-## Description
+Then install the dependencies:
 
-This <example> project shows you how to do <a thing> using the <example:module> of the thirdweb <example:language> sdk.
+```
+npm install
+```
 
 ### Technologies Used
 
-- <example:project>
-- <example:project>
-- ...
+- NextJS
 
-### thirdweb SDK Functionality Used
+### Local Development
 
-- <example:module>.<method>
-- <example:module>.<method>
-- ...
+Run the following command to run the app locally:
 
-### Running the project
-
-- step 1
-- step 2
-- ...
 ```
+npm run dev
+```
+
+### Building for production
+
+```
+npm run build
+```
+
+### Portal Guide
+
+- [Create an early access NFT with TypeScript and React](https://portal.thirdweb.com/guides/early-access-nft-with-typescript)
+
+### Resources
+
+- [Official Thirdweb Docs](https://docs.thirdeb.com)
+- [Community Discord](https://discord.gg/thirdweb)

@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #c0ffee;
+}
+
+.container > button,
+.btn {
+  background: #1ce;
+  color: #fff;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.btn {
+  margin-top: 10px;
+}
+
+.NFT {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.nftDesc {
+  margin: 10px 0px;
+  font-size: 0.8rem;
+  color: #000;
+}
+
+.nftDesc > span {
+  font-weight: bold;
+}

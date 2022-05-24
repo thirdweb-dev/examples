@@ -11,9 +11,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@thirdweb-dev/sdk": "latest",
+    "@thirdweb-dev/sdk": "^2.2.18",
     "dotenv": "^10.0.0",
-    "ethers": "^5.5.1"
+    "ethers": "^5.6.7"
   },
   "devDependencies": {
     "@types/node": "^17.0.23",

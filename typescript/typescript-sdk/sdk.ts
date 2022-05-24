@@ -12,10 +12,4 @@ if (!PRIVATE_KEY) {
 }
 
 // Instantiate thirdweb SDK
-const sdk = new ThirdwebSDK(
-  new ethers.Wallet(
-    PRIVATE_KEY,
-    // RPC URL, we'll use Polygon Mumbai
-    ethers.getDefaultProvider("https://matic-mumbai.chainstacklabs.com")
-  )
-);
+const sdk = ThirdwebSDK.fromPrivateKey(PRIVATE_KEY, "mumbai")

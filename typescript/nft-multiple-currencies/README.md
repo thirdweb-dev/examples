@@ -11,7 +11,7 @@ This project shows you how to make an ERC-1555 drop where users can pay with mul
 
 ### thirdweb SDK Functionality Used
 
-- edition.signature.generate
+- edition.signature.generateFromTokenId
 - edition.signature.mint
 
 ### Running the project

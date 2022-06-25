@@ -25,7 +25,7 @@ const generateMintSignature = async (
   const token = getToken(tokenName) ? getToken(tokenName) : getToken("MATIC");
 
   try {
-    const signedPayload = await edition.signature.generate({
+    const signedPayload = await edition.signature.generateFromTokenId({
       tokenId: tokenId,
       quantity: "1",
       to: address,

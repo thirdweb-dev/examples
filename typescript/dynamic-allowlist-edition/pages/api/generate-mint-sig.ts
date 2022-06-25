@@ -32,7 +32,7 @@ const generateMintSignature = async (
       "0x62C84CC051544c43d05a5Ff0E8Da596fBdB15032"
     );
     try {
-      const signedPayload = await edition.signature.generate({
+      const signedPayload = await edition.signature.generateFromTokenId({
         tokenId: 0,
         quantity: "1",
         to: address,

@@ -10,10 +10,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   );
 
   const drop = sdk.getSignatureDrop(
-    "0xcB31341eE7FaC6917e8e9D71441747e5FAdA466F"
+    "0x74B3c525AEC4c7b1Fd9e173eB865785db638ea7F"
   );
 
-  const teamMembers = ["0xA7A3Eb92AdCb892eEf571A70841C6671BB8eBb5d"];
+  const teamMembers = ["0x39Ab29fAfb5ad19e96CFB1E1c492083492DB89d4"];
 
   const allowList = ["0x6bF08768995E7430184a48e96940B83C15c1653f"];
 

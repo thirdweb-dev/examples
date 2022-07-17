@@ -4,7 +4,7 @@ import type { NextPage } from "next";
 const Home: NextPage = () => {
   const address = useAddress();
   const connectWithMetamask = useMetamask();
-  const drop = useSignatureDrop("0xcB31341eE7FaC6917e8e9D71441747e5FAdA466F");
+  const drop = useSignatureDrop("0x74B3c525AEC4c7b1Fd9e173eB865785db638ea7F");
 
   const mint = async () => {
     const signedPayloadReq = await fetch("/api/generate-mint-sig", {
@@ -26,9 +26,7 @@ const Home: NextPage = () => {
   return (
     <div>
       {address ? (
-        <>
-          <button onClick={mint}>Mint</button>
-        </>
+        <button onClick={mint}>Mint</button>
       ) : (
         <button onClick={connectWithMetamask}>Connect with Metamask</button>
       )}

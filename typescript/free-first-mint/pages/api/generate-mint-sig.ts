@@ -8,8 +8,6 @@ const generateMintSignature = async (
 ) => {
   const { address, quantity } = JSON.parse(req.body);
 
-  console.log((quantity - 1) * 2);
-
   const drop = sdk.getSignatureDrop(
     "0x6d148a12f7c0ae693609F5a26E085646f8F73A53"
   );
@@ -23,9 +21,9 @@ const generateMintSignature = async (
 
   const determinePrice = (): number => {
     if (record[0]?.fields?.hasClaimed) {
-      return quantity * 2;
+      return 2;
     }
-    return (quantity - 1) * 2;
+    return ((quantity - 1) * 2) / quantity;
   };
 
   try {

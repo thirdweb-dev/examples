@@ -7,6 +7,7 @@ const generateMintSignature = async (
   res: NextApiResponse
 ) => {
   const { address, quantity } = JSON.parse(req.body);
+  const pricePerNft = 2;
 
   const drop = sdk.getSignatureDrop(
     "0x6d148a12f7c0ae693609F5a26E085646f8F73A53"
@@ -21,9 +22,9 @@ const generateMintSignature = async (
 
   const determinePrice = (): number => {
     if (record[0]?.fields?.hasClaimed) {
-      return 2;
+      return pricePerNft;
     }
-    return ((quantity - 1) * 2) / quantity;
+    return ((quantity - 1) * pricePerNft) / quantity;
   };
 
   try {
@@ -34,7 +35,7 @@ const generateMintSignature = async (
     });
 
     return res.status(200).json({
-      signedPayload: signedPayload,
+      signedPayload,
     });
   } catch (error) {
     return res.status(500).json({

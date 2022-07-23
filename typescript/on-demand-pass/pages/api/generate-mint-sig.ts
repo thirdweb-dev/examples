@@ -9,28 +9,23 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     "mumbai"
   );
 
-  const drop = sdk.getSignatureDrop(
-    "0xcB31341eE7FaC6917e8e9D71441747e5FAdA466F"
+  const collection = sdk.getNFTCollection(
+    "0xeED8165505d78D2CA9f2b4fA6Aff179CeBd4dCA4"
   );
 
-  const teamMembers = ["0xA7A3Eb92AdCb892eEf571A70841C6671BB8eBb5d"];
-
-  const allowList = ["0x6bF08768995E7430184a48e96940B83C15c1653f"];
-
-  const determinePrice = (address: string) => {
-    if (teamMembers.includes(address)) {
-      return 0;
-    }
-    if (allowList.includes(address)) {
-      return 1;
-    }
-    return 2;
-  };
-
   try {
-    const signedPayload = await drop.signature.generate({
+    const signedPayload = await collection.signature.generate({
       to: address,
-      price: determinePrice(address),
+      metadata: {
+        name: "Test title",
+        description: "Test description",
+        image:
+          "https://images.unsplash.com/photo-1658309833607-4de9956d0bbd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80",
+        properties: {
+          type: "test",
+        },
+      },
+      price: "1",
     });
 
     return res.status(200).json({

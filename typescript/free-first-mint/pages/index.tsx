@@ -8,7 +8,7 @@ const Home: NextPage = () => {
   const signatureDrop = useSignatureDrop(
     "0x6d148a12f7c0ae693609F5a26E085646f8F73A53"
   );
-  const [quantity, setQuantity] = useState<number>(1);
+  const [quantity, setQuantity] = useState<string>("1");
 
   const mint = async () => {
     const signedPayloadReq = await fetch("/api/generate-mint-sig", {
@@ -21,12 +21,6 @@ const Home: NextPage = () => {
       const nft = await signatureDrop?.signature.mint(
         signedPayload.signedPayload
       );
-      if (nft) {
-        await fetch("/api/set-claimed", {
-          method: "POST",
-          body: JSON.stringify({ address }),
-        });
-      }
       return nft;
     } catch (err) {
       console.error(err);
@@ -41,7 +35,7 @@ const Home: NextPage = () => {
           <button onClick={mint}>Mint</button>
           <input
             value={quantity}
-            onChange={(e) => setQuantity(parseInt(e.target.value))}
+            onChange={(e) => setQuantity(e.target.value)}
             placeholder="Quantity"
             type="number"
           />

@@ -34,6 +34,24 @@ const generateMintSignature = async (
       quantity,
     });
 
+    const record = await table
+      .select({
+        fields: ["address", "hasClaimed"],
+        filterByFormula: `NOT({address} != '${address}')`,
+      })
+      .all();
+
+    if (record.length > 0) {
+      record[0].updateFields({
+        hasClaimed: "true",
+      });
+    } else {
+      await table.create({
+        address,
+        hasClaimed: "true",
+      });
+    }
+
     return res.status(200).json({
       signedPayload,
     });

@@ -20,7 +20,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     description: "Build web3 apps, easily.",
     image: readFileSync(path.join(process.cwd(), "public", "thirdweb.svg")),
     properties: {
-      type: "test",
+      web: "3",
     },
   };
 

@@ -1,5 +1,7 @@
 import { ThirdwebSDK } from "@thirdweb-dev/sdk";
+import { readFileSync } from "fs";
 import type { NextApiRequest, NextApiResponse } from "next";
+import path from "path";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { address } = JSON.parse(req.body);
@@ -14,10 +16,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   );
 
   const metadata = {
-    name: "Test title",
-    description: "Test description",
-    image:
-      "https://images.unsplash.com/photo-1658309833607-4de9956d0bbd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80",
+    name: "Thirdweb",
+    description: "Build web3 apps, easily.",
+    image: readFileSync(path.join(process.cwd(), "public", "thirdweb.svg")),
     properties: {
       type: "test",
     },

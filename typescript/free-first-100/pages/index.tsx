@@ -1,9 +1,4 @@
-import {
-  useAddress,
-  useDisconnect,
-  useMetamask,
-  useSignatureDrop,
-} from "@thirdweb-dev/react";
+import { useAddress, useMetamask, useSignatureDrop } from "@thirdweb-dev/react";
 import type { NextPage } from "next";
 import { useState } from "react";
 

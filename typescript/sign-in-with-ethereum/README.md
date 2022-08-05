@@ -48,5 +48,5 @@ npm run build
 
 ### Resources
 
-- [Official Thirdweb Docs](https://docs.thirdeb.com)
+- [Official Thirdweb Docs](https://portal.thirdweb.com)
 - [Community Discord](https://discord.gg/thirdweb)

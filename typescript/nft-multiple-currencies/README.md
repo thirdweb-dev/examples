@@ -25,5 +25,5 @@ This project shows you how to make an ERC-1555 drop where users can pay with mul
 
 ### Resources
 
-- [Official Thirdweb Docs](https://docs.thirdeb.com)
+- [Official Thirdweb Docs](https://portal.thirdweb.com)
 - [Community Discord](https://discord.gg/thirdweb)

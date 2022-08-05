@@ -21,5 +21,5 @@ This project shows you how to make a gasless NFT drop using the Edition Drop Con
 
 ### Resources
 
-- [Official Thirdweb Docs](https://docs.thirdeb.com)
+- [Official Thirdweb Docs](https://portal.thirdweb.com)
 - [Community Discord](https://discord.gg/thirdweb)

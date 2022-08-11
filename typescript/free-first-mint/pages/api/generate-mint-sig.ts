@@ -45,7 +45,7 @@ const generateMintSignature = async (
     } else {
       await table.create({
         address,
-        quantityClaimed: quantityClaimed + quantityToMint,
+        quantityClaimed: quantityToMint,
       });
     }
 

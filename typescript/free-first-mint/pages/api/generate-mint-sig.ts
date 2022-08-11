@@ -7,7 +7,9 @@ const generateMintSignature = async (
   res: NextApiResponse
 ) => {
   const { address, quantity } = JSON.parse(req.body);
+  const quantityToMint = parseInt(quantity) as number;
   const pricePerNft = 2;
+  const freeNFTs = 8;
 
   const drop = sdk.getSignatureDrop(
     "0x6d148a12f7c0ae693609F5a26E085646f8F73A53"
@@ -15,40 +17,35 @@ const generateMintSignature = async (
 
   const record = await table
     .select({
-      fields: ["address", "hasClaimed"],
+      fields: ["address", "quantityClaimed"],
       filterByFormula: `NOT({address} != '${address}')`,
     })
     .all();
 
+  const quantityClaimed = (record[0]?.fields?.quantityClaimed as number) || 0;
+
   const determinePrice = (): number => {
-    if (record[0]?.fields?.hasClaimed) {
+    if (quantityClaimed >= freeNFTs) {
       return pricePerNft;
     }
-    return ((quantity - 1) * pricePerNft) / quantity;
+    return ((quantityToMint - freeNFTs) * pricePerNft) / quantityToMint;
   };
 
   try {
     const signedPayload = await drop.signature.generate({
       to: address,
       price: determinePrice(),
-      quantity,
+      quantity: quantityToMint,
     });
-
-    const record = await table
-      .select({
-        fields: ["address", "hasClaimed"],
-        filterByFormula: `NOT({address} != '${address}')`,
-      })
-      .all();
 
     if (record.length > 0) {
       record[0].updateFields({
-        hasClaimed: "true",
+        quantityClaimed: quantityClaimed + quantityToMint,
       });
     } else {
       await table.create({
         address,
-        hasClaimed: "true",
+        quantityClaimed: quantityClaimed + quantityToMint,
       });
     }
 

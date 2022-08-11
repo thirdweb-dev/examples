@@ -9,7 +9,7 @@ const generateMintSignature = async (
   const { address, quantity } = JSON.parse(req.body);
   const quantityToMint = parseInt(quantity) as number;
   const pricePerNft = 2;
-  const freeNFTs = 8;
+  const freeNFTs = 2;
 
   const drop = sdk.getSignatureDrop(
     "0x6d148a12f7c0ae693609F5a26E085646f8F73A53"
@@ -28,7 +28,10 @@ const generateMintSignature = async (
     if (quantityClaimed >= freeNFTs) {
       return pricePerNft;
     }
-    return ((quantityToMint - freeNFTs) * pricePerNft) / quantityToMint;
+    if (quantityToMint > freeNFTs) {
+      return ((quantityToMint - freeNFTs) * pricePerNft) / quantityToMint;
+    }
+    return 0;
   };
 
   try {

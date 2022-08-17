@@ -24,6 +24,10 @@ const Home: NextPage = () => {
       return nft;
     } catch (err) {
       console.error(err);
+      await fetch("/api/fix-airtable", {
+        method: "POST",
+        body: JSON.stringify({ address, quantity }),
+      });
       return null;
     }
   };

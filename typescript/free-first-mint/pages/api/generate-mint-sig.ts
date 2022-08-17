@@ -22,7 +22,7 @@ const generateMintSignature = async (
     })
     .all();
 
-  const quantityClaimed = 0;
+  const quantityClaimed = (record[0]?.fields?.quantityClaimed as number) || 0;
 
   const determinePrice = (): number => {
     if (quantityClaimed >= freeNFTs) {

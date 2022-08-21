@@ -2,18 +2,15 @@ import {
   ThirdwebNftMedia,
   useAddress,
   useContract,
-  useDisconnect,
   useMetamask,
   useNFTs,
 } from "@thirdweb-dev/react";
 import type { NextPage } from "next";
-import Image from "next/image";
 import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
   const address = useAddress();
   const connectWithMetamask = useMetamask();
-  const disconnect = useDisconnect();
 
   const { contract } = useContract(
     "0x05B8aab3fd77580C29c6510d8C54D9E6be4262d2"
@@ -36,7 +33,9 @@ const Home: NextPage = () => {
 
   return (
     <div className={styles.container}>
-      {address && <button onClick={disconnect}>Disconnect</button>}
+      {!address && (
+        <button onClick={connectWithMetamask}>Connect Wallet</button>
+      )}
 
       {nfts && nfts?.length > 0 && (
         <div className={styles.cards}>

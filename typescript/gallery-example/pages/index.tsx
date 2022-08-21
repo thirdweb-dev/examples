@@ -11,7 +11,6 @@ import styles from "../styles/Home.module.css";
 const Home: NextPage = () => {
   const address = useAddress();
   const connectWithMetamask = useMetamask();
-
   const { contract } = useContract(
     "0x05B8aab3fd77580C29c6510d8C54D9E6be4262d2"
   );
@@ -46,14 +45,11 @@ const Home: NextPage = () => {
             )
             .map((nft) => (
               <div key={nft.metadata.id.toString()} className={styles.card}>
-                {nft.metadata.id.toString()}
                 <h1>{nft.metadata.name}</h1>
-                {nft.metadata?.image && (
-                  <ThirdwebNftMedia
-                    metadata={nft.metadata}
-                    className={styles.image}
-                  />
-                )}
+                <ThirdwebNftMedia
+                  metadata={nft.metadata}
+                  className={styles.image}
+                />
                 <p>
                   owned by{" "}
                   {address && nft.owner === address

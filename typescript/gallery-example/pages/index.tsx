@@ -36,11 +36,7 @@ const Home: NextPage = () => {
 
   return (
     <div className={styles.container}>
-      {address ? (
-        <button onClick={disconnect}>Disconnect</button>
-      ) : (
-        <button onClick={connectWithMetamask}>Connect with Metamask</button>
-      )}
+      {address && <button onClick={disconnect}>Disconnect</button>}
 
       {nfts && nfts?.length > 0 && (
         <div className={styles.cards}>

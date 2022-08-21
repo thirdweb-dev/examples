@@ -1,6 +1,8 @@
 import {
+  ThirdwebNftMedia,
   useAddress,
   useContract,
+  useDisconnect,
   useMetamask,
   useNFTs,
 } from "@thirdweb-dev/react";
@@ -11,6 +13,7 @@ import styles from "../styles/Home.module.css";
 const Home: NextPage = () => {
   const address = useAddress();
   const connectWithMetamask = useMetamask();
+  const disconnect = useDisconnect();
 
   const { contract } = useContract(
     "0x05B8aab3fd77580C29c6510d8C54D9E6be4262d2"
@@ -34,40 +37,37 @@ const Home: NextPage = () => {
   return (
     <div className={styles.container}>
       {address ? (
-        <>
-          {nfts && nfts?.length > 0 && (
-            <div className={styles.cards}>
-              {nfts
-                .filter(
-                  (nft) =>
-                    nft.owner !== "0x0000000000000000000000000000000000000000"
-                )
-                .map((nft) => (
-                  <div key={nft.metadata.id.toString()} className={styles.card}>
-                    {nft.metadata.id.toString()}
-                    <h1>{nft.metadata.name}</h1>
-                    {nft.metadata?.image && (
-                      <div className={styles.image}>
-                        <Image
-                          src={nft.metadata?.image}
-                          layout="fill"
-                          objectFit="contain"
-                          alt={nft.metadata.name}
-                        />
-                      </div>
-                    )}
-                    {address === nft.owner ? (
-                      <p>Owned by you</p>
-                    ) : (
-                      <p>Owner: {truncateAddress(nft.owner)}</p>
-                    )}
-                  </div>
-                ))}
-            </div>
-          )}
-        </>
+        <button onClick={disconnect}>Disconnect</button>
       ) : (
         <button onClick={connectWithMetamask}>Connect with Metamask</button>
+      )}
+
+      {nfts && nfts?.length > 0 && (
+        <div className={styles.cards}>
+          {nfts
+            .filter(
+              (nft) =>
+                nft.owner !== "0x0000000000000000000000000000000000000000"
+            )
+            .map((nft) => (
+              <div key={nft.metadata.id.toString()} className={styles.card}>
+                {nft.metadata.id.toString()}
+                <h1>{nft.metadata.name}</h1>
+                {nft.metadata?.image && (
+                  <ThirdwebNftMedia
+                    metadata={nft.metadata}
+                    className={styles.image}
+                  />
+                )}
+                <p>
+                  owned by{" "}
+                  {address && nft.owner === address
+                    ? "you"
+                    : truncateAddress(nft.owner)}
+                </p>
+              </div>
+            ))}
+        </div>
       )}
     </div>
   );

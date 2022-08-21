@@ -13,7 +13,7 @@ const Home: NextPage = () => {
   const connectWithMetamask = useMetamask();
 
   const { contract } = useContract(
-    "0x84E490af996A4ff59978253BAA0A72F559862D54"
+    "0x05B8aab3fd77580C29c6510d8C54D9E6be4262d2"
   );
 
   const { data: nfts, isLoading: loading } = useNFTs(contract?.nft, {

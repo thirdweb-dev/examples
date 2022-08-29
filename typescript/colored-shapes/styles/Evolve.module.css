@@ -1,0 +1,56 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #c0ffee;
+}
+
+.container > button,
+.btn {
+  background: #1ce;
+  color: #fff;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.btn {
+  margin-top: 5px;
+}
+
+.NFTsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 20px;
+}
+
+.NFT {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.NFTName {
+  font-size: 1rem;
+  font-weight: semibold;
+  margin: 5px;
+}
+
+.main {
+  display: flex;
+  gap: 20px;
+}
+
+.NFTsWrapper {
+  display: flex;
+  flex-direction: column;
+}

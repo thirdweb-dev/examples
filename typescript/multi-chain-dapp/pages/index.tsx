@@ -1,12 +1,12 @@
 import type { NextPage } from "next";
 
 import { ThirdwebProvider } from "@thirdweb-dev/react";
-import { useRecoilValue } from "recoil";
 import HomeComponent from "../components/Home";
-import ChainIdState from "../recoil/ChainId";
+import { useContext } from "react";
+import ChainContext from "../context/Chain";
 
 const Home: NextPage = () => {
-  const selectedChain = useRecoilValue(ChainIdState);
+  const { selectedChain } = useContext(ChainContext);
 
   return (
     <ThirdwebProvider desiredChainId={selectedChain}>

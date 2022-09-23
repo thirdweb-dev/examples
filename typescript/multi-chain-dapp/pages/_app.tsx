@@ -1,11 +1,15 @@
+import { ChainId } from "@thirdweb-dev/sdk";
 import type { AppProps } from "next/app";
-import { RecoilRoot } from "recoil";
+import { useContext, useState } from "react";
+import ChainContext from "../context/Chain";
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const [selectedChain, setSelectedChain] = useState(ChainId.Mumbai);
+
   return (
-    <RecoilRoot>
+    <ChainContext.Provider value={{ selectedChain, setSelectedChain }}>
       <Component {...pageProps} />
-    </RecoilRoot>
+    </ChainContext.Provider>
   );
 }
 

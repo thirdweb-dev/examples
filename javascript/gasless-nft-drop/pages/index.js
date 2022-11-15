@@ -9,9 +9,7 @@ export default function Home() {
     <div className={styles.container}>
       <Web3Button
         contractAddress="0xcDFA0Db479d35e1D1C76bf2D65166e32Ce42F048"
-        action={(contract) =>
-          contract.erc1155.claimTo(address, tokenId, quantity)
-        }
+        action={(contract) => contract.erc1155.claim(tokenId, quantity)}
         onSuccess={() => alert("Claimed!")}
         onError={() => alert("Something went wrong")}
       >

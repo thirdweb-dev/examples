@@ -1,13 +1,7 @@
-import {
-  ConnectWallet,
-  useAddress,
-  useContract,
-  useMetamask,
-} from "@thirdweb-dev/react";
+import { ConnectWallet, useAddress, useContract } from "@thirdweb-dev/react";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
-  const connectWithMetamask = useMetamask();
   const address = useAddress();
   const { contract } = useContract(
     "0xcDFA0Db479d35e1D1C76bf2D65166e32Ce42F048"

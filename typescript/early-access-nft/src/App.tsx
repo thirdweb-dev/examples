@@ -1,11 +1,17 @@
-import { ThirdwebProvider, ChainId } from "@thirdweb-dev/react";
+import { ThirdwebProvider } from "@thirdweb-dev/react";
 import Nft from "./components/Nft";
 
-const activeChainId = ChainId.Mumbai;
 
 function App() {
+  // This is the chain your dApp will work on.
+  const activeChain = "mumbai";
+
+    /**
+   * Make sure that your app is wrapped with these contexts.
+   * If you're using React, you'll have to replace the Component setup with {children}
+   */
   return (
-    <ThirdwebProvider desiredChainId={activeChainId}>
+    <ThirdwebProvider activeChain={activeChain}>
       <Nft />
     </ThirdwebProvider>
   );

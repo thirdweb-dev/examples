@@ -1,12 +1,17 @@
 import type { AppProps } from 'next/app';
-import { ChainId, ThirdwebProvider } from '@thirdweb-dev/react';
+import { ThirdwebProvider } from '@thirdweb-dev/react';
 
-// This is the chainId your dApp will work on.
-const activeChainId = ChainId.Mumbai;
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return (
-    <ThirdwebProvider desiredChainId={activeChainId}>
+  // This is the chain your dApp will work on.
+  const activeChain = "mumbai";
+
+    /**
+   * Make sure that your app is wrapped with these contexts.
+   * If you're using React, you'll have to replace the Component setup with {children}
+   */
+    return (
+      <ThirdwebProvider activeChain={activeChain}>
       <Component {...pageProps} />
     </ThirdwebProvider>
   );

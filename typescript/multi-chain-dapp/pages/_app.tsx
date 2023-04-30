@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <ChainContext.Provider value={{ selectedChain, setSelectedChain }}>
-      <ThirdwebProvider desiredChainId={selectedChain}>
+      <ThirdwebProvider activeChain={selectedChain}>
         <Component {...pageProps} />
       </ThirdwebProvider>
     </ChainContext.Provider>

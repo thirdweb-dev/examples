@@ -11,16 +11,16 @@
   "dependencies": {
     "@thirdweb-dev/react": "^3",
     "@thirdweb-dev/sdk": "^3",
-    "ethers": "^5.7.1",
-    "next": "^12.3.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "ethers": "^5",
+    "next": "^13",
+    "react": "^18.2",
+    "react-dom": "^18.2"
   },
   "devDependencies": {
     "@types/node": "^18.7.18",
     "@types/react": "^18.0.20",
     "eslint": "^8.23.1",
-    "eslint-config-next": "^12.3.1",
-    "typescript": "^4.8.3"
+    "eslint-config-next": "^13",
+    "typescript": "^5"
   }
 }

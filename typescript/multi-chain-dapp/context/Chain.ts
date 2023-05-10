@@ -1,7 +1,7 @@
 import { createContext } from "react";
 
 const ChainContext = createContext({
-  selectedChain: "mainnet",
+  selectedChain: "goerli",
   setSelectedChain: (chain: string) => {},
 });
 

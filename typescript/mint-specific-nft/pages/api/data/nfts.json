@@ -1,0 +1,26 @@
+[
+  {
+    "id": 0,
+    "name": "NFT 1",
+    "description": "This is our first amazing NFT",
+    "url": "https://bafybeihgfxd5f5sqili34vyjyfai6kezlagrya43e6bkgw6hnxucxug5ya.ipfs.nftstorage.link/",
+    "price": 0.01,
+    "minted": false
+  },
+  {
+    "id": 1,
+    "name": "NFT 2",
+    "description": "This is our second amazing NFT",
+    "url": "https://bafybeihgfxd5f5sqili34vyjyfai6kezlagrya43e6bkgw6hnxucxug5ya.ipfs.nftstorage.link/",
+    "price": 0.02,
+    "minted": false
+  },
+  {
+    "id": 2,
+    "name": "NFT 3",
+    "description": "This is our third amazing NFT",
+    "url": "https://bafybeihgfxd5f5sqili34vyjyfai6kezlagrya43e6bkgw6hnxucxug5ya.ipfs.nftstorage.link/",
+    "price": 0.03,
+    "minted": false
+  }
+]
